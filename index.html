@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soso Pkhakadze | Portfolio</title>
+    <link rel="icon" href="images/SP.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="#home">
+                <img src="images/SP.png" alt="logo">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="#about"><strong>About</strong></a>
+            <a href="#education"><strong>Education</strong></a>
+            <a href="#skills"><strong>Skills</strong></a>
+            <a href="#work"><strong>Work</strong></a>
+            <a href="#projects"><strong>Projects</strong></a>
+            <a href="#contact"><strong>Contact</strong></a>
+        </div>
+        <div class="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>Hello, I'm Soso Pkhakadze.</h1>
+            <p>A passionate Full-Stack developer.</p>
+            <div class="button-container">
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+<section id="about" class="about-section">
+    <div class="about-content">
+        <div class="about-text">
+            <h2 class="section-title">About Me</h2>
+            <p>Passionate computer science student with a proven track record in developing dynamic and impactful web solutions. Eager to leverage expertise in Java, Python, and web technologies to contribute as a Full Stack Developer within your innovative financial startup.</p>
+            <p>Proficient in front-end technologies like HTML, CSS, and JavaScript, with hands-on experience in frameworks such as React. Skilled in backend development, particularly with Python and database management including SQL. Excited about integrating external APIs to enrich website functionalities and implementing robust product analytics tools for optimization insights.</p>
+            <p>Committed to ensuring data integrity and user security through effective database replication and social login implementation. Ready to embrace challenges, drive innovation, and make a meaningful impact in revolutionizing trading practices through cutting-edge technology and data-driven solutions.</p>
+        </div>
+        <div class="hole-container">
+            <div id="hole">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Education Section -->
+<section id="education" class="education-section">
+    <div class="education-content">
+        <h2 class="section-title">Education</h2>
+        <div class="education-container">
+            <a href="https://www.kiu.edu.ge/eng" target="\_blank">
+            <div class="education-item">
+                <div class="education-details">
+                    <h3>Kutaisi International University (KIU)</h3>
+                    <p>Bachelor in Computer Science</p>
+                    <p>2022 - Present</p>
+                </div>
+                <div class="education-image">
+                    <img src="images/KIU.png" alt="University">
+                </div>
+            </div>
+        </a>
+        </div>
+    </div>
+</section>
+    
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="skills-content">
+            <h2 class="section-title">Skills</h2>
+            <div class="filter-container">
+                <div class="filter-dropdown">
+                    <button id="filterBtnSk" class="filter-btn">Filter by Category</button>
+                    <div id="filterDropdownSk" class="filter-dropdown-content">
+                        <a href="#skills" data-filter="all">All</a>
+                        <a href="#skills" data-filter="data-engineering">Data Engineering</a>
+                        <a href="#skills" data-filter="front-end">Front-end</a>
+                        <a href="#skills" data-filter="back-end">Back-end</a>
+                        <a href="#skills" data-filter="others">Others</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item" data-skill="HTML" data-category="front-end">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                </div>
+                <div class="skill-item" data-skill="CSS" data-category="front-end">
+                    <i class="fab fa-css3"></i>
+                    <h3>CSS</h3>
+                </div>
+                <div class="skill-item" data-skill="JS" data-category="back-end front-end">
+                    <i class="fab fa-js"></i>
+                    <h3>JS</h3>
+                </div>
+                <div class="skill-item" data-skill="React" data-category="front-end">
+                    <i class="fab fa-react"></i>
+                    <h3>React</h3>
+                </div>
+                <div class="skill-item" data-skill="Java Core" data-category="back-end">
+                    <i class="fab fa-java"></i>
+                    <h3>Java Core</h3>
+                </div>
+                <div class="skill-item" data-skill="SQL" data-category="data-engineering back-end">
+                    <i class="fas fa-database"></i>
+                    <h3>SQL</h3>
+                </div>
+                <div class="skill-item" data-skill="Python (Django)" data-category="back-end front-end">
+                    <i class="fab fa-python"></i>
+                    <h3>Python (Django)</h3>
+                </div>
+                <div class="skill-item" data-skill="Basics of C" data-category="back-end">
+                    <i class="fas fa-code"></i>
+                    <h3>Basics of C</h3>
+                </div>
+                <div class="skill-item" data-skill="Relational databases" data-category="data-engineering back-end">
+                    <i class="fas fa-database"></i>
+                    <h3>Relational databases (MariaDB/MySQL)</h3>
+                </div>
+                <div class="skill-item" data-skill="Python (BeautifulSoup and Pandas)" data-category="data-engineering back-end">
+                    <i class="fab fa-python"></i>
+                    <h3>Python (BeautifulSoup and Pandas)</h3>
+                </div>
+                <div class="skill-item" data-skill="Power BI" data-category="data-engineering">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Power BI</h3>
+                </div>
+                <div class="skill-item" data-skill="Knowledge of ETL processes" data-category="data-engineering">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Knowledge of ETL processes</h3>
+                </div>
+                <div class="skill-item" data-skill="Python (Pygame library)" data-category="others">
+                    <i class="fab fa-python"></i>
+                    <h3>Python (Pygame library)</h3>
+                </div>
+                <div class="skill-item" data-skill="Basics of Git" data-category="others">
+                    <i class="fab fa-git"></i>
+                    <h3>Basics of Git</h3>
+                </div>
+                <div class="skill-item" data-skill="Strong problem-solving skills" data-category="others">
+                    <i class="fas fa-brain"></i>
+                    <h3>Strong problem-solving skills</h3>
+                </div>
+                <div class="skill-item" data-skill="Algorithms and data structures" data-category="others">
+                    <i class="fas fa-code"></i>
+                    <h3>Algorithms and data structures</h3>
+                </div>
+                <div class="skill-item" data-skill="English B2" data-category="others">
+                    <i class="fas fa-language"></i>
+                    <h3>English B2</h3>
+                </div>
+            </div>
+    </div>
+</section>
+
+<!-- Skill Description Modal -->
+<div id="skillModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalSkillTitle" class="modal-title"></h2>
+        <p id="modalSkillDescription" class="modal-description"></p>
+    </div>
+</div>
+
+
+
+<!-- Work Experience Section -->
+<section id="work" class="work-section">
+    <div class="work-content">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="work-container">
+            <div class="work-item" data-job="Customer Service Expert">
+                <div class="work-details">
+                    <h3>Customer Service Expert</h3>
+                    <p>Netex Group</p>
+                    <p>Aug 2022 - Aug 2023</p>
+                </div>
+                <div class="work-description">
+                    <ul>
+                        <li>Developed strong communication and interpersonal skills, fostering a collaborative work environment.</li>
+                        <li>Contributed to team success by prioritizing tasks effectively and working towards common results.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section">
+    <div class="projects-content">
+        <h2 class="section-title">Projects</h2>
+        <div class="filter-container">
+            <div class="filter-dropdown">
+                <button id="filterBtn" class="filter-btn">Filter by Technology</button>
+                <div id="filterDropdown" class="filter-dropdown-content">
+                    <a href="#projects" data-filter="all">All</a>
+                    <a href="#projects" data-filter="python">Python</a>
+                    <a href="#projects" data-filter="java">Java</a>
+                    <a href="#projects" data-filter="c">C</a>
+                    <a href="#projects" data-filter="sql">SQL</a>
+                    <a href="#projects" data-filter="mysql">MySQL</a>
+                    <a href="#projects" data-filter="django">Django</a>
+                    <a href="#projects" data-filter="flask">Flask</a>
+                    <a href="#projects" data-filter="beautifulsoup">BeautifulSoup</a>
+                    <a href="#projects" data-filter="html">HTML/CSS</a>
+                    <a href="#projects" data-filter="javascript">HTML/CSS/JAVASCRIPT</a>
+                </div>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by technology">
+            </div>
+        </div>
+        <div class="projects-grid">
+            <div class="project-item" data-technologies="HTML/CSS/JAVASCRIPT">
+                <h3>Calculator</h3>
+                <p>Developed simple calculator with a responsive and very beautifull style.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+            </div>
+            <div class="project-item" data-technologies="HTML/CSS/JAVASCRIPT">
+                <h3>Tic-Tac-Toe</h3>
+                <p>Implemented Tic-Tac-Toe game with a responsive and very beautifull style.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+            </div>
+            <div class="project-item" data-technologies="HTML/CSS/JAVASCRIPT">
+                <h3>Guess The Word</h3>
+                <p>Developed game 'Wordle' with amaizing style and structure.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+            </div>
+            <div class="project-item" data-technologies="HTML/CSS/JAVASCRIPT">
+                <h3>Timer</h3>
+                <p>Implemented Timer project with unique and dynamic style.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+            </div>
+            <div class="project-item" data-technologies="Python Django BeautifulSoup">
+                <h3>Price Comparison</h3>
+                <p>Developed a price comparison web application using Django, integrating scraping scripts for major e-commerce websites like Amazon, eBay, Walmart, Target, Etsy, and Wayfair. Implemented sorting functionality to display search results from cheapest to most expensive.</p>
+                <p><strong>Technologies:</strong> Python, Django, BeautifulSoup</p>
+            </div>
+            <div class="project-item" data-technologies="Python Django">
+                <h3>Weather Forecast</h3>
+                <p>Implemented a weather forecast application using Django and the OpenWeatherMap API. Users can input a city name to retrieve a three-day forecast, displaying weather descriptions, temperatures, and icons.</p>
+                <p><strong>Technologies:</strong> Python, Django</p>
+            </div>
+            <div class="project-item" data-technologies="Python Django MySQL">
+                <h3>Commerce</h3>
+                <p>Created eBay-style auction site with Django, featuring listing creation, bidding, commenting, and watchlists. Utilized Django models for database management and integrated admin interface.</p>
+                <p><strong>Technologies:</strong> Python, Django, MySQL</p>
+            </div>
+            <div class="project-item" data-technologies="Python Flask MySQL">
+                <h3>Finance</h3>
+                <p>Developed a simple web application, Finance, enabling users to manage stock portfolios.</p>
+                <p><strong>Technologies:</strong> Python, Flask, MySQL</p>
+            </div>
+            <div class="project-item" data-technologies="Power BI">
+                <h3>Sales Dashboard</h3>
+                <p>Developed an advanced sales dashboard using Power BI, leveraging data from Excel documents. Integrated various tables and charts to provide comprehensive insights into sales performance and trends.</p>
+                <p><strong>Technologies:</strong> Power BI, excel</p>
+            </div>
+            <div class="project-item" data-technologies="C">
+                <h3>Wordle Game</h3>
+                <p>Implemented a simplified version of the popular game "Wordle" in C, providing users with an engaging word-guessing experience.</p>
+                <p><strong>Technologies:</strong> C</p>
+            </div>
+            <div class="project-item" data-technologies="Java">
+                <h3>Group Chat Application</h3>
+                <p>Developed a dynamic and interactive group chat application in Java, employing socket programming and multithreading for seamless communication among users.</p>
+                <p><strong>Technologies:</strong> Java</p>
+            </div>
+            <div class="project-item" data-technologies="Java">
+                <h3>SpotiJy</h3>
+                <p>song manager program organizing artists, albums, and songs. add artists, track trending music, and manage their collections efficiently.</p>
+                <p><strong>Technologies:</strong> Java</p>
+            </div>
+            <div>
+            </div>
+        </div>
+    <!--    <a href="#projects" class="projects-link">Here is the website for my HTML/CSS/JavaScript projects</a> -->
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="contact-content">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p>(+995) 591-91-71-97</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>sosiko2004@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Georgia/Kutaisi</p>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/sosiko-pkhakadze-733428274/" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Soso Pkhakadze. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/sosiko.pkhakadze" target="\_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/PkhakadzeSosiko" target="\_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/soso.pkhakadze/" target="\_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/sosiko-pkhakadze-733428274/" target="\_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
