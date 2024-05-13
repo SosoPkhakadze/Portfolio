@@ -162,7 +162,6 @@ color: #e0e0e0;
   color: #e0e0e0;
 }
 
-
 /* Skill Description Modal */
 .modal {
   background-color: rgba(0, 0, 0, 0.9);
@@ -185,6 +184,7 @@ color: #e0e0e0;
 .modal-description {
   color: #e0e0e0;
 }
+
 
 
 
@@ -215,6 +215,30 @@ color: #e0e0e0;
   color: #e0e0e0;
 }
 
+.work-overlay {
+  background-color: rgba(28, 45, 63, 0.9);
+}
+
+.work-details {
+  background-color: rgba(43, 48, 49, 0.2);
+}
+
+.work-description {
+  background-color: rgba(43, 48, 49, 0.2);
+  color: white;
+}
+
+.work-details .company {
+  color: white;
+}
+
+.work-details .duration {
+  color: white;
+}
+
+.work-details h3 {
+  color: beige;
+}
 
 
 
