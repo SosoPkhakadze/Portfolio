@@ -126,7 +126,7 @@
 
 /* Skills Section */
 .skills-section {
-  background-color: #f0f0f0;
+  background: linear-gradient(to bottom right, #f5f5f5, #e0e0e0);
 }
 
 .skill-item {
@@ -141,7 +141,6 @@
 .skill-item h3 {
   color: #333;
 }
-
 
 /* Skill Description Modal */
 .modal {
@@ -171,6 +170,7 @@
 
 
 
+
 /* Work Experience Section */
 .work-section {
   background-color: #f9f9f9;
@@ -197,6 +197,9 @@
   color: #444;
 }
 
+.work-overlay {
+  background-color: rgba(0, 123, 255, 0.9);
+}
 
 
 /* Projects Section */
@@ -213,6 +216,10 @@
 .project-item {
   background-color: #fff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-item h3 {
+  color: #007bff;
 }
 
 .project-item p {
