@@ -162,6 +162,11 @@ color: #e0e0e0;
   color: #e0e0e0;
 }
 
+.category-btn {
+  color: beige;
+}
+
+
 /* Skill Description Modal */
 .modal {
   background-color: rgba(0, 0, 0, 0.9);
