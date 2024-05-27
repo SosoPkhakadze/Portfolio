@@ -7,6 +7,7 @@
 
   body, body * {
     transition: all 0.5s ease; 
+    text-decoration: none;
   }
 
   body {
@@ -596,6 +597,7 @@ h1, h2, h3, h4, h5, h6 {
 .work-details {
   padding: 30px;
   text-align: left;
+  cursor: pointer;
 }
 
 .work-details h3 {
@@ -631,44 +633,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
 }
 
-.work-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-}
 
-.work-item:hover .work-overlay {
-  opacity: 1;
-}
-
-.work-overlay-content {
-  text-align: center;
-  color: #fff;
-}
-
-.work-overlay-content h4 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.work-overlay-content p {
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
 
 /* Media Queries */
 @media screen and (max-width: 992px) {
-  .work-overlay-content h4 {
-    font-size: 10px;
-  }
+
 
   .work-item {
     width: calc(50% - 40px);
