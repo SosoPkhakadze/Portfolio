@@ -1,10 +1,8 @@
 // Sticky Navbar
-var timeout; 
+var timeout;
 
 window.addEventListener('scroll', function() {
     var header = document.querySelector('.navbar');
-    var logo = this.document.querySelector('.navbar.nav-brand');
-    var tags = this.document.querySelector('.navbar.nav-links');
 
     if (window.scrollY > 1) {
         header.style.opacity = '0.4';
@@ -25,31 +23,52 @@ document.addEventListener('DOMContentLoaded', function() {
     var navLinks = document.querySelector('.nav-links');
 
     navToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('show');
+        navLinks.classList.toggle('show'); // Toggle the 'show' class on navLinks
     });
 });
+
+
 
 // Skill Description Modal
-var modal = document.getElementById("skillModal");
-var span = document.getElementsByClassName("close")[0];
+const modal = document.getElementById("skillModal");
+const span = document.getElementsByClassName("close")[0];
+const skillItems = document.querySelectorAll(".skill-item");
 
-// When the user clicks on a skill item, open the modal with the skill name and description
-var skillItems = document.querySelectorAll(".skill-item");
-skillItems.forEach(function (item) {
-    item.addEventListener("click", function () {
-        var skillName = this.querySelector('h3').textContent;
-        var skillDescription = this.querySelector('.skill-description').textContent; 
+skillItems.forEach(function(item) {
+    item.addEventListener("click", function() {
+        const skillName = this.querySelector('h3').textContent;
+        const skillDescription = this.querySelector('.skill-description').textContent;
+        const skillProgress = Math.floor(Math.random() * 41) + 60; // Random progress between 60-100%
+
         document.getElementById("modalSkillTitle").innerText = skillName;
         document.getElementById("modalSkillDescription").innerText = skillDescription;
+        document.getElementById("modalSkillProgress").style.width = `${skillProgress}%`;
+
         modal.style.display = "block";
+        setTimeout(() => {
+            modal.classList.add('show');
+        }, 10);
     });
 });
+
+span.addEventListener("click", closeModal);
+window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+function closeModal() {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 300);
+}
 
 // Skills filtering and search
 const categoryBtns = document.querySelectorAll('.category-btn');
 
 categoryBtns.forEach(btn => btn.addEventListener('click', filterByCategory));
-
 
 function filterByCategory(e) {
     const filter = e.target.dataset.filter;
@@ -60,32 +79,31 @@ function filterByCategory(e) {
         const categories = Array.from(item.classList).filter(cls => cls.startsWith('category-'));
         if (filter === 'all' || categories.includes(`category-${filter}`)) {
             item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            }, 10);
         } else {
-            item.style.display = 'none';
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                item.style.display = 'none';
+            }, 300);
         }
     });
 }
 
-// Close the modal when the user clicks on the close button
-span.addEventListener("click", function() {
-    modal.style.display = "none";
+// Add animation to skill items on page load
+window.addEventListener('load', () => {
+    skillItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
 });
 
-// Close the modal when the user clicks anywhere outside of the modal content
-window.addEventListener("click", function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-});
-
-
-// When the user clicks on <span> (x) or outside the modal, close the modal
-window.addEventListener("click", function(event) {
-    if (event.target == modal || event.target.classList.contains("close")) {
-        modal.style.display = "none";
-    }
-});
-
+// Work item description toggle
 document.addEventListener("DOMContentLoaded", function() {
     var workItems = document.querySelectorAll(".work-item");
   
@@ -95,58 +113,108 @@ document.addEventListener("DOMContentLoaded", function() {
         description.style.display = (description.style.display === "block") ? "none" : "block";
       });
     });
-  });
+});
 
+// Project filtering
+const filterBtn = document.getElementById('filterBtn');
+const filterDropdown = document.getElementById('filterDropdown');
+const filterLinks = filterDropdown.querySelectorAll('a');
+const projectItems = document.querySelectorAll('.project-item');
+let swiper;
 
-  const filterBtn = document.getElementById('filterBtn');
-  const filterDropdown = document.getElementById('filterDropdown');
-  const projectItems = document.querySelectorAll('.project-item');
-  
-  filterBtn.addEventListener('click', function(event) {
-      event.preventDefault();
-      filterDropdown.classList.toggle('show');
-  });
-  
-  filterDropdown.addEventListener('click', function(event) {
-      event.preventDefault();
-      if (event.target.tagName === 'A') {
-          const filter = event.target.dataset.filter;
-          filterProjects(filter);
-          filterDropdown.classList.remove('show');
-      }
-  });
-  
-  window.addEventListener('click', function(event) {
-      if (!event.target.matches('.filter-btn')) {
-          const dropdowns = document.getElementsByClassName('filter-dropdown-content');
-          for (let i = 0; i < dropdowns.length; i++) {
-              const openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                  openDropdown.classList.remove('show');
-              }
-          }
-      }
-  });
-  
-  function filterProjects(filter, searchText = '') {
-      projectItems.forEach(item => {
-          const technologies = item.dataset.technologies.toLowerCase();
-          const shouldShow =
-              (filter === 'all' || technologies.includes(filter)) &&
-              (searchText === '' || technologies.includes(searchText));
-  
-          if (shouldShow) {
-              item.style.display = 'block';
-          } else {
-              item.style.display = 'none';
-          }
-      });
-  }
-  
+filterBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    filterBtn.classList.toggle('active');
+    filterDropdown.classList.toggle('show');
+});
 
+filterLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const filter = this.dataset.filter;
+        filterProjects(filter);
+        updateActiveFilter(this);
+        closeDropdown();
+    });
+});
 
+function updateActiveFilter(clickedLink) {
+    filterLinks.forEach(link => link.classList.remove('active'));
+    clickedLink.classList.add('active');
+    filterBtn.querySelector('span').textContent = clickedLink.textContent;
+}
 
+function closeDropdown() {
+    filterBtn.classList.remove('active');
+    filterDropdown.classList.remove('show');
+}
 
+window.addEventListener('click', function(event) {
+    if (!event.target.closest('.filter-dropdown')) {
+        closeDropdown();
+    }
+});
+
+function filterProjects(filter) {
+    const swiperWrapper = document.querySelector('.swiper-wrapper');
+    swiperWrapper.innerHTML = '';
+
+    projectItems.forEach(item => {
+        const technologies = item.dataset.technologies.toLowerCase();
+        const shouldShow = filter === 'all' || technologies.includes(filter);
+        
+        if (shouldShow) {
+            swiperWrapper.appendChild(item);
+            item.style.display = 'flex';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+
+    if (swiper) {
+        swiper.destroy(true, true);
+    }
+    initSwiper();
+}
+
+function initSwiper() {
+    swiper = new Swiper('.swiper-container', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2,
+            slideShadows: true,
+        },
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initSwiper);
+// Theme toggle
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 const link = document.querySelector('link[href="white.css"]');
 
