@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="white.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </head>
 <body>
     <!-- Navbar -->
@@ -30,6 +34,7 @@
             <i class="fas fa-bars"></i>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -89,7 +94,7 @@
 <!-- Skills Section -->
 <section id="skills" class="skills-section">
     <div class="skills-content">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title">My Skills</h2>
         <div class="skills-categories">
             <button class="category-btn active" data-filter="all">All</button>
             <button class="category-btn" data-filter="data-engineering">Data Engineering</button>
@@ -241,6 +246,7 @@
         <span class="close">&times;</span>
         <h2 id="modalSkillTitle" class="modal-title"></h2>
         <p id="modalSkillDescription" class="modal-description"></p>
+        <div id="modalSkillProgress"></div>
     </div>
 </div>
 
@@ -280,113 +286,120 @@
         <h2 class="section-title">My Projects</h2>
         <div class="filter-container">
             <div class="filter-dropdown">
-                <button id="filterBtn" class="filter-btn">Filter by Technology <i class="fas fa-filter"></i></button>
+                <button id="filterBtn" class="filter-btn">
+                    <span>Filter by Technology</span>
+                    <svg class="filter-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 6h18M6 12h12m-9 6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
                 <div id="filterDropdown" class="filter-dropdown-content">
-                    <a href="#projects" data-filter="all">All</a>
+                    <a href="#projects" data-filter="all" class="active">All</a>
                     <a href="#projects" data-filter="python">Python</a>
-                    <a href="#projects" data-filter="powerbi">Power BI</a>
+                    <a href="#projects" data-filter="tabi">Power BI/Tableau</a>
                     <a href="#projects" data-filter="javaa">Java</a>
                     <a href="#projects" data-filter="ccc">C</a>
                     <a href="#projects" data-filter="bases">MySQL/MariaDB</a>
                     <a href="#projects" data-filter="django">Django</a>
                     <a href="#projects" data-filter="flask">Flask</a>
-                    <a href="#projects" data-filter="hcj">HTML/CSS/JAVASCRIPT</a>
-                    <a href="#projects" data-filter="tableau">Tableau</a>
+                    <a href="#projects" data-filter="hcj">HTML/CSS/JavaScript</a>
                 </div>
             </div>
-            
         </div>
-        <div class="projects-grid">
-            <div class="project-item" data-technologies="React Django python">
-                <h3>Job Aggregator WEbsite</h3>
-                <p>Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information. Successfully deployed and completed project, demonstrating proficiency in web development and API integration.</p>
-                <p><strong>Technologies:</strong> Django, React</p>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide project-item" data-technologies="React Django python">
+                    <h3>Job Aggregator Website</h3>
+                    <p>Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information. Successfully deployed and completed project, demonstrating proficiency in web development and API integration.</p>
+                    <p><strong>Technologies:</strong> Django, React</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="React Django python">
+                    <h3>Notes App</h3>
+                    <p>Developed a dynamic notes application leveraging Django for the backend and React for the frontend. This application enables users to seamlessly create, update, and remove notes, providing a streamlined experience for organizing information effectively.</p>
+                    <p><strong>Technologies:</strong> Django, React</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="hcj">
+                    <h3>Calculator</h3>
+                    <p>Developed simple calculator with a responsive and very beautiful style.</p>
+                    <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="hcj">
+                    <h3>Tic-Tac-Toe</h3>
+                    <p>Implemented Tic-Tac-Toe game with a responsive and very beautiful style.</p>
+                    <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="hcj">
+                    <h3>Guess The Word</h3>
+                    <p>Developed game 'Wordle' with amazing style and structure.</p>
+                    <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="hcj">
+                    <h3>Timer</h3>
+                    <p>Implemented Timer project with unique and dynamic style.</p>
+                    <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="Django BeautifulSoup python">
+                    <h3>Price Comparison</h3>
+                    <p>Developed a price comparison web application using Django, integrating scraping scripts for major e-commerce websites like Amazon, eBay, Walmart, Target, Etsy, and Wayfair. Implemented sorting functionality to display search results from cheapest to most expensive.</p>
+                    <p><strong>Technologies:</strong> Python, Django, BeautifulSoup</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="Django python">
+                    <h3>Weather Forecast</h3>
+                    <p>Built a user-friendly weather forecast app using Django and the OpenWeatherMap API, offering accurate weather predictions for desired locations, enhancing user experience and enabling informed planning.</p>
+                    <p><strong>Technologies:</strong> Python, Django</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="Django bases python">
+                    <h3>Commerce</h3>
+                    <p>Created eBay-style auction site with Django, featuring listing creation, bidding, commenting, and watchlists. Utilized Django models for database management and integrated admin interface.</p>
+                    <p><strong>Technologies:</strong> Python, Django, MySQL</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="Flask bases">
+                    <h3>Finance</h3>
+                    <p>Developed a simple web application, Finance, enabling users to manage stock portfolios.</p>
+                    <p><strong>Technologies:</strong> Python, Flask, MySQL</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="tabi">
+                    <h3>Sales Dashboard</h3>
+                    <p>Developed an advanced sales dashboard using Power BI, leveraging data from SQL databases. Demonstrated expertise in data cleaning, exploratory data analysis, and predictive modeling to uncover actionable insights driving business decisions.</p>
+                    <p><strong>Technologies:</strong> Power BI, SQL</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="tabi">
+                    <h3>Data Analysis Dashboard</h3>
+                    <p>Designed a comprehensive data analysis dashboard for a Pizza Restaurant using Power BI and MariaDB, delivering key performance indicators and actionable insights, facilitating strategic decision-making and business optimization.</p>
+                    <p><strong>Technologies:</strong> Power BI, MariaDb</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="tabi">
+                    <h3>COVID Insight Analysis Dashboard</h3>
+                    <p>Leveraged Power BI to analyze COVID-19 data, providing insights into virus spread, vaccination rates, and their impact on public health and the economy. Integrated diverse data sources, crafted interactive visualizations, enabling users to discern trends for informed decision-making.</p>
+                    <p><strong>Technologies:</strong> Power BI</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="tabi">
+                    <h3>User Requirements Analysis Dashboard</h3>
+                    <p>Developed a comprehensive Tableau dashboard project by analyzing user requirements, creating mockups, and deciding on chart types. Built the data model, prepared the data source, and created various charts. Designed the layout container and constructed the dashboard to deliver insightful visualizations and facilitate data-driven decision-making.</p>
+                    <p><strong>Technologies:</strong> Tableau</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="cCc">
+                    <h3>Wordle Game</h3>
+                    <p>Implemented a simplified version of the popular game "Wordle" in C, providing users with an engaging word-guessing experience.</p>
+                    <p><strong>Technologies:</strong> C</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="Javaa">
+                    <h3>Group Chat Application</h3>
+                    <p>Developed a dynamic and interactive group chat application in Java, employing socket programming and multithreading for seamless communication among users.</p>
+                    <p><strong>Technologies:</strong> Java</p>
+                </div>
+                <div class="swiper-slide project-item" data-technologies="Javaa">
+                    <h3>SpotiJy</h3>
+                    <p>Song manager program organizing artists, albums, and songs. Add artists, track trending music, and manage their collections efficiently.</p>
+                    <p><strong>Technologies:</strong> Java</p>
+                </div>
             </div>
-            <div class="project-item" data-technologies="React Django python">
-                <h3>Notes App</h3>
-                <p>Developed a dynamic notes application leveraging Django for the backend and React for the frontend. This application enables users to seamlessly create, update, and remove notes, providing a streamlined experience for organizing information effectively.</p>
-                <p><strong>Technologies:</strong> Django, React</p>
-            </div>
-            <div class="project-item" data-technologies="hcj">
-                <h3>Calculator</h3>
-                <p>Developed simple calculator with a responsive and very beautifull style.</p>
-                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
-            </div>
-            <div class="project-item" data-technologies="hcj">
-                <h3>Tic-Tac-Toe</h3>
-                <p>Implemented Tic-Tac-Toe game with a responsive and very beautifull style.</p>
-                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
-            </div>
-            <div class="project-item" data-technologies="hcj">
-                <h3>Guess The Word</h3>
-                <p>Developed game 'Wordle' with amaizing style and structure.</p>
-                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
-            </div>
-            <div class="project-item" data-technologies="hcj">
-                <h3>Timer</h3>
-                <p>Implemented Timer project with unique and dynamic style.</p>
-                <p><strong>Technologies:</strong> HTML, CSS, JAVASCRIPT</p>
-            </div>
-            <div class="project-item" data-technologies="Django BeautifulSoup python">
-                <h3>Price Comparison</h3>
-                <p>Developed a price comparison web application using Django, integrating scraping scripts for major e-commerce websites like Amazon, eBay, Walmart, Target, Etsy, and Wayfair. Implemented sorting functionality to display search results from cheapest to most expensive.</p>
-                <p><strong>Technologies:</strong> Python, Django, BeautifulSoup</p>
-            </div>
-            <div class="project-item" data-technologies="Django python">
-                <h3>Weather Forecast</h3>
-                <p>Built a user-friendly weather forecast app using Django and the OpenWeatherMap API, offering accurate weather predictions for desired locations, enhancing user experience and enabling informed planning.</p>
-                <p><strong>Technologies:</strong> Python, Django</p>
-            </div>
-            <div class="project-item" data-technologies="Django bases python">
-                <h3>Commerce</h3>
-                <p>Created eBay-style auction site with Django, featuring listing creation, bidding, commenting, and watchlists. Utilized Django models for database management and integrated admin interface.</p>
-                <p><strong>Technologies:</strong> Python, Django, MySQL</p>
-            </div>
-            <div class="project-item" data-technologies="Flask bases">
-                <h3>Finance</h3>
-                <p>Developed a simple web application, Finance, enabling users to manage stock portfolios.</p>
-                <p><strong>Technologies:</strong> Python, Flask, MySQL</p>
-            </div>
-            <div class="project-item" data-technologies="powerbi">
-                <h3>Sales Dashboard</h3>
-                <p>Developed an advanced sales dashboard using Power BI, leveraging data from SQL databases. Demonstrated expertise in data cleaning, exploratory data analysis, and predictive modeling to uncover actionable insights driving business decisions.</p>
-                <p><strong>Technologies:</strong> Power BI, SQL</p>
-            </div>
-            <div class="project-item" data-technologies="powerbi">
-                <h3>Data Analysis Dashboard</h3>
-                <p>Designed a comprehensive data analysis dashboard for a Pizza Restaurant using Power BI and MariaDB, delivering key performance indicators and actionable insights, facilitating strategic decision-making and business optimization.</p>
-                <p><strong>Technologies:</strong> Power BI, MariaDb</p>
-            </div>
-            <div class="project-item" data-technologies="powerbi">
-                <h3>COVID Insight Analysis Dashboard</h3>
-                <p>Leveraged Power BI to analyze COVID-19 data, providing insights into virus spread, vaccination rates, and their impact on public health and the economy. Integrated diverse data sources, crafted interactive visualizations, enabling users to discern trends for informed decision-making.</p>
-                <p><strong>Technologies:</strong> Power BI</p>
-            </div>
-            <div class="project-item" data-technologies="tableau">
-                <h3>User Requirements Analysis Dashboard</h3>
-                <p>Developed a comprehensive Tableau dashboard project by analyzing user requirements, creating mockups, and deciding on chart types. Built the data model, prepared the data source, and created various charts. Designed the layout container and constructed the dashboard to deliver insightful visualizations and facilitate data-driven decision-making.</p>
-                <p><strong>Technologies:</strong> Tableau</p>
-            </div>
-            <div class="project-item" data-technologies="cCc">
-                <h3>Wordle Game</h3>
-                <p>Implemented a simplified version of the popular game "Wordle" in C, providing users with an engaging word-guessing experience.</p>
-                <p><strong>Technologies:</strong> C</p>
-            </div>
-            <div class="project-item" data-technologies="Javaa">
-                <h3>Group Chat Application</h3>
-                <p>Developed a dynamic and interactive group chat application in Java, employing socket programming and multithreading for seamless communication among users.</p>
-                <p><strong>Technologies:</strong> Java</p>
-            </div>
-            <div class="project-item" data-technologies="Javaa">
-                <h3>SpotiJy</h3>
-                <p>song manager program organizing artists, albums, and songs. add artists, track trending music, and manage their collections efficiently.</p>
-                <p><strong>Technologies:</strong> Java</p>
-            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-
-    <!--    <a href="#projects" class="projects-link">Here is the website for my HTML/CSS/JavaScript projects</a> working on it -->
     </div>
 </section>
+
 
 <!-- Contact Section -->
 <section id="contact" class="contact-section">
@@ -405,10 +418,10 @@
                 <i class="fas fa-map-marker-alt"></i>
                 <p>Georgia/Kutaisi</p>
             </div>
-            <div class="contact-item">
-                <i class="fab fa-linkedin"></i>
-                <a href="https://www.linkedin.com/in/sosiko-pkhakadze-733428274/" target="_blank">LinkedIn</a>
-            </div>
+            <a class="contact-item" href="https://www.linkedin.com/in/soso-pkhakadze-733428274/" target="_blank">
+                <i class="fab fa-linkedin"></i> <p>LinkedIn</p>
+            </a>
+                
         </div>
     </div>
 </section>
@@ -421,7 +434,7 @@
             <a href="https://www.facebook.com/sosiko.pkhakadze" target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a href="https://twitter.com/PkhakadzeSosiko" target="_blank"><i class="fab fa-twitter"></i></a>
             <a href="https://www.instagram.com/soso.pkhakadze/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/sosiko-pkhakadze-733428274/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/in/soso-pkhakadze-733428274/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
 </footer>
