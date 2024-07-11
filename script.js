@@ -551,3 +551,76 @@ terminalWindow.addEventListener('click', () => {
         terminalWindow.scrollTop = terminalWindow.scrollHeight;
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
+
+    // Initialize particles.js
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#ffffff" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Quantum particles
+  const particlesContainer = document.getElementById('quantum-particles');
+  
+  function createParticle() {
+      const particle = document.createElement('div');
+      particle.style.position = 'absolute';
+      particle.style.width = '2px';
+      particle.style.height = '2px';
+      particle.style.background = Math.random() > 0.5 ? 'var(--primary-color)' : 'var(--secondary-color)';
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+      particle.style.opacity = Math.random();
+      particle.style.transition = 'all 5s linear';
+      
+      particlesContainer.appendChild(particle);
+      
+      setTimeout(() => {
+          particle.style.transform = `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`;
+          particle.style.opacity = 0;
+      }, 100);
+      
+      setTimeout(() => {
+          particlesContainer.removeChild(particle);
+      }, 5000);
+  }
+  
+  setInterval(createParticle, 100);
+
+
+  // Quantum link hover effect
+  const quantumLinks = document.querySelectorAll('.quantum-link');
+  quantumLinks.forEach(link => {
+      link.addEventListener('mouseover', () => {
+          link.style.color = 'var(--primary-color)';
+          link.querySelector('.link-orbit').style.borderColor = 'var(--secondary-color)';
+      });
+      link.addEventListener('mouseout', () => {
+          link.style.color = 'var(--text-color)';
+          link.querySelector('.link-orbit').style.borderColor = 'var(--primary-color)';
+      });
+  });
+});
