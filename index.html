@@ -1,92 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soso Pkhakadze | Portfolio</title>
-    <link rel="icon" href="images/SP.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="white.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Soso Pkhakadze | Portfolio</title>
+        <link rel="icon" href="images/SP.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    </head> 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="nav-container">
         <div class="nav-brand">
             <a href="#home">
-                <img src="images/SP.png" alt="logo">
+                <img src="images/SP.png" alt="logo" class="logo">
             </a>
         </div>
-        <button id="themeToggleBtn">Night mode</button>
         <div class="nav-links">
-            <a href="#about"><strong>About</strong></a>
-            <a href="#education"><strong>Education</strong></a>
-            <a href="#skills"><strong>Skills</strong></a>
-            <a href="#work"><strong>Work</strong></a>
-            <a href="#projects"><strong>Projects</strong></a>
-            <a href="#contact"><strong>Contact</strong></a>
+            <a href="#about"><span data-text="About">About</span></a>
+            <a href="#education"><span data-text="Education">Education</span></a>
+            <a href="#skills"><span data-text="Skills">Skills</span></a>
+            <a href="#work"><span data-text="Work">Work</span></a>
+            <a href="#projects"><span data-text="Projects">Projects</span></a>
+            <a href="#contact"><span data-text="Contact">Contact</span></a>
         </div>
-        <div class="nav-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background"></div>
-        <div class="hero-content">
-            <div class="typewriter">
-                <h1>Hello, I'm Soso Pkhakadze.</h1>
-                <h3>A passionate Full-Stack developer.</h3>
-            </div>
-            <div class="button-container">
-                <a href="#contact" class="btn">Get in Touch</a>
+        <div class="nav-controls">
+            <button id="themeToggleBtn" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </section>
-    
-    <!-- About Section -->
-<section id="about" class="about-section">
-    <div class="about-content">
-        <div class="about-text">
-            <h2 class="section-title">About Me</h2>
-            <p>Passionate computer science student with a proven track record in developing dynamic and impactful web solutions. Eager to leverage expertise in Java, Python, and web technologies to contribute as a Full Stack Developer within your innovative financial startup.</p>
-            <p>Proficient in front-end technologies like HTML, CSS, and JavaScript, with hands-on experience in frameworks such as React. Skilled in backend development, particularly with Python and database management including SQL. Excited about integrating external APIs to enrich website functionalities and implementing robust product analytics tools for optimization insights.</p>
-            <p>Committed to ensuring data integrity and user security through effective database replication and social login implementation. Ready to embrace challenges, drive innovation, and make a meaningful impact in revolutionizing trading practices through cutting-edge technology and data-driven solutions.</p>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div id="particles-js"></div>
+    <div class="hero-content">
+        <div class="typewriter">
+            <h1 class="glitch" data-text="Hello, I'm Soso Pkhakadze.">Hello, I'm Soso Pkhakadze.</h1>
+            <h3 class="subtitle">A passionate <span class="typing"></span></h3>
         </div>
-        <div class="hole-container">
-            <div id="hole">
-                <div class="circle1"></div>
-                <div class="circle2"></div>
+        <div class="cta-container">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </div>
 </section>
 
-    <!-- Education Section -->
-<section id="education" class="education-section">
-    <div class="education-content">
-        <h2 class="section-title">Education</h2>
-        <div class="education-container">
-            <a href="https://www.kiu.edu.ge/eng" target="\_blank">
-            <div class="education-item">
-                <div class="education-details">
-                    <h3>Kutaisi International University (KIU)</h3>
-                    <p>Bachelor in Computer Science</p>
-                    <p>2022 - Present</p>
+<!-- about Section -->
+<section id="about" class="about-section">
+    <h2 class="section-title" data-text="About Me">About Me</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <div class="about-description">
+                <p class="typing-effect"></p>
+            </div>
+        </div>
+        <div class="about-visual">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-button closse"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
                 </div>
-                <div class="education-image">
-                    <img src="images/KIU.png" alt="University">
+                <div class="terminal-window" id="terminalWindow">
+                    <p class="line">Welcome to SosoCLI v1.0.0</p>
+                    <p class="line">Type 'help' to see available commands</p>
+                    <p class="line active">> <span class="cursor">|</span></p>
                 </div>
             </div>
-        </a>
         </div>
     </div>
+</section>
+
+
+<!-- Education Section -->
+<section id="education" class="education-section">
+    <div class="education-content">
+        <h2 class="section-title">Educational Odyssey</h2>
+        <div class="education-showcase">
+            <div class="education-item" data-tilt>
+                <div class="education-card">
+                    <div class="card-front">
+                        <div class="university-logo">
+                            <img src="images/KIU.png" alt="Kutaisi International University">
+                        </div>
+                        <h3>Kutaisi International University</h3>
+                        <p class="degree">Bachelor in Computer Science</p>
+                        <p class="date">2022 - Present</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Highlights</h4>
+                        <ul class="achievements">
+                            <li>AI & Machine Learning Focus</li>
+                            <li>Minor: Management, BSc</li>
+                            <li>3.2 GPA</li>
+                        </ul>
+                        <a href="https://www.kiu.edu.ge/eng" target="_blank" class="learn-more"><span>Learn More</span></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more education-item divs for additional entries -->
+        </div>
+    </div>
+    <div class="particle-network"></div>
 </section>
     
 
@@ -103,140 +144,8 @@
             <button class="category-btn" data-filter="others">Others</button>
         </div>
         <div class="skills-grid">
-            <div class="skill-item category-front-end">
-                <i class="fab fa-html5"></i>
-                <h3>HTML</h3>
-                <div class="skill-description" style="display: none;">
-                    <p>I have extensive experience with HTML from my coursework and personal projects. I've developed numerous projects utilizing HTML.</p>
-                </div>
-            </div>
-                <div class="skill-item category-front-end">
-                    <i class="fab fa-css3"></i>
-                    <h3>CSS</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Similar to HTML, I have a strong command of CSS from both coursework and personal projects, enabling me to create visually appealing and responsive web designs.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-front-end">
-                    <i class="fab fa-js"></i>
-                    <h3>JS</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>I possess solid proficiency in JavaScript, leveraging it for creating interactive and dynamic web elements.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-front-end" data-skill="React" data-category="front-end">
-                    <i class="fab fa-react"></i>
-                    <h3>React</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>While still in the learning phase, I have acquired basic knowledge of React and have been actively incorporating it into my coursework.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-back-end" data-skill="Java Core" data-category="back-end">
-                    <i class="fab fa-java"></i>
-                    <h3>Java Core</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>I have completed a comprehensive course in Java Core during my university studies and have honed my skills further through algorithmic problem-solving.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-data-engineering category-back-end" data-skill="SQL" data-category="data-engineering back-end">
-                    <i class="fas fa-database"></i>
-                    <h3>SQL</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Through university courses, I have gained a deep understanding of SQL, enabling me to design and manage relational databases effectively.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-back-end" data-skill="Python (Django)" data-category="back-end">
-                    <i class="fab fa-python"></i>
-                    <h3>Django</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Self-taught in Django, I have developed several projects, as detailed in my portfolio, showcasing my proficiency in building web applications with Python.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-back-end" data-skill="Basics of C" data-category="back-end">
-                    <i class="fas fa-code"></i>
-                    <h3>Basics of C</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Self-taught, I have grasped the fundamentals of C programming, which has provided me with a strong foundation in system-level programming.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-data-engineering category-back-end" data-skill="Relational databases" data-category="data-engineering back-end">
-                    <i class="fas fa-database"></i>
-                    <h3>Relational databases (MariaDB/MySQL)</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Having completed a full course on MariaDB in university, I am proficient in working with relational databases, ensuring efficient data management.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-data-engineering" data-skill="BeautifulSoup" data-category="data-engineering">
-                    <i class="fab fa-python"></i>
-                    <h3>BeautifulSoup</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Self-taught in BeautifulSoup, I have utilized this library in various projects, demonstrating my ability to scrape and manipulate data effectively.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-data-engineering" data-skill="Pandas" data-category="data-engineering">
-                    <i class="fab fa-python"></i>
-                    <h3>Pandas</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Self-taught in Pandas, I have utilized this library in various projects, demonstrating my ability to manipulate and analyze data effectively.</p>
-                    </div>
-                </div>                        
-                <div class="skill-item category-data-engineering" data-skill="Power BI" data-category="data-engineering">
-                    <i class="fas fa-chart-bar"></i>
-                    <h3>Power BI</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Self-taught and proficient in Power BI, I have created insightful reports and visualizations, showcasing my ability to derive meaningful insights from data.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-data-engineering" data-skill="Power BI" data-category="data-engineering">
-                    <i class="fas fa-chart-bar"></i>
-                    <h3>Tableau</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Self-taught and proficient in Tableau, I have created insightful reports and visualizations, showcasing my ability to derive meaningful insights from data.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-data-engineering" data-skill="Knowledge of ETL processes" data-category="data-engineering">
-                    <i class="fas fa-exchange-alt"></i>
-                    <h3>Knowledge of ETL processes</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>With a foundational understanding of ETL processes, I am equipped to handle data extraction, transformation, and loading tasks efficiently.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-others" data-skill="Python (Pygame library)" data-category="others">
-                    <i class="fab fa-python"></i>
-                    <h3>Pygame</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Having explored the Pygame library, I have created several mini-games, demonstrating my aptitude for game development in Python.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-others" data-skill="Basics of Git" data-category="others">
-                    <i class="fab fa-git"></i>
-                    <h3>Basics of Git</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>I possess basic proficiency in Git, which I have utilized for version control in my projects, facilitating collaboration and code management.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-others" data-skill="Strong problem-solving skills" data-category="others">
-                    <i class="fas fa-brain"></i>
-                    <h3>Strong problem-solving skills</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>With a knack for analytical thinking and creative problem-solving, I excel in tackling complex challenges and finding effective solutions.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-others" data-skill="Algorithms and data structures" data-category="others">
-                    <i class="fas fa-code"></i>
-                    <h3>Algorithms and data structures</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Having completed a comprehensive course in algorithms and data structures, I am well-versed in implementing efficient solutions to various computational problems.</p>
-                    </div>
-                </div>
-                <div class="skill-item category-others" data-skill="English B2" data-category="others">
-                    <i class="fas fa-language"></i>
-                    <h3>English B2</h3>
-                    <div class="skill-description" style="display: none;">
-                        <p>Proficient in English at the B2 level, I possess effective communication skills, enabling me to collaborate seamlessly in multicultural environments.</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Skill items will be dynamically generated here -->
+        </div>
     </div>
 </section>
 
@@ -245,8 +154,13 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2 id="modalSkillTitle" class="modal-title"></h2>
+        <div class="skill-level">
+            <div class="skill-progress">
+                <div id="modalSkillProgress" class="progress-bar"></div>
+            </div>
+            <span id="modalSkillLevel"></span>
+        </div>
         <p id="modalSkillDescription" class="modal-description"></p>
-        <div id="modalSkillProgress"></div>
     </div>
 </div>
 
@@ -256,26 +170,35 @@
 <section id="work" class="work-section">
     <div class="work-content">
       <h2 class="section-title">Work Experience</h2>
-      <div class="work-container">
-        <div class="work-item" data-job="Customer Service Expert">
-          <div class="work-details">
-            <h3>Data Analyst</h3>
-            <p class="company">Netex Consulting LLC</p>
-            <p class="duration">Aug 2022 - Aug 2023</p>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-icon">
+            <i class="fas fa-chart-line"></i>
           </div>
-          <a href="#work" class="work-description">
-            <ul>
-                <li>Utilized thermal imaging technology to collect and analyze data on livestock conditions across multiple agricultural sites.</li>
-                <li>Conducted detailed assessments and data entry of thermal camera footage to identify anomalies and areas needing attention, ensuring accurate and timely reporting.</li>
-                <li>Maintained and updated Excel spreadsheets with precise data entries, including temperature readings and environmental conditions, to facilitate informed decision-making for resource management.</li>
-                <li>Collaborated with a remote team of 4-5 colleagues to process and verify data, ensuring high accuracy and consistency in reporting.</li>
-                <li>Developed and presented reports with actionable insights on environmental conditions, contributing to optimized resource allocation and improved operational efficiency.</li>
-                <li>Enhanced team communication and coordination through effective task prioritization and collaborative problem-solving.</li>
+          <div class="timeline-content">
+            <h3>Data Analyst</h3>
+            <h4>Netex Consulting LLC</h4>
+            <p class="timeline-date">Aug 2022 - Aug 2023</p>
+            <div class="timeline-body">
+              <div class="skill-tags">
+                <span>Data Analysis</span>
+                <span>Thermal Imaging</span>
+                <span>Excel</span>
+                <span>Remote Collaboration</span>
+              </div>
+              <ul>
+                <li>Utilized thermal imaging technology for livestock condition analysis</li>
+                <li>Conducted detailed assessments of thermal camera footage</li>
+                <li>Maintained and updated Excel spreadsheets with precise data entries</li>
+                <li>Collaborated with a remote team of 4-5 colleagues</li>
+                <li>Developed and presented reports with actionable insights</li>
+                <li>Enhanced team communication and coordination</li>
               </ul>
-          </a>
-          
+            </div>
+            <button class="read-more">Read More</button>
+          </div>
         </div>
-        
+        <!-- Add more timeline items for other work experiences -->
       </div>
     </div>
   </section>
