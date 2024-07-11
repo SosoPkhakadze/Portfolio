@@ -645,8 +645,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .university-logo {
-  width: 120px;
-  height: 120px;
+  height: 50%;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 20px;
@@ -703,6 +702,7 @@ h1, h2, h3, h4, h5, h6 {
 .achievements {
     list-style-type: none;
     padding: 0;
+    text-align: left;
     margin-bottom: 20px;
 }
 
