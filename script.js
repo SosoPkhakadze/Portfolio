@@ -275,21 +275,46 @@ const skillsData = [
 
 // Generate skill items
 const skillsGrid = document.querySelector('.skills-grid');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+const showLessBtn = document.getElementById('showLessBtn');
+let currentCategory = 'all';
+let visibleSkills = 8;
 
-function generateSkillItems() {
-  skillsData.forEach(skill => {
-      const skillItem = document.createElement('div');
-      skillItem.className = `skill-item category-${skill.category}`;
-      skillItem.innerHTML = `
-          <i class="${skill.icon}"></i>
-          <h3>${skill.name}</h3>
-      `;
-      skillItem.addEventListener('click', () => openModal(skill));
-      skillsGrid.appendChild(skillItem);
-  });
+function generateSkillItems(category, limit) {
+    skillsGrid.innerHTML = '';
+    const filteredSkills = category === 'all'
+        ? skillsData
+        : skillsData.filter(skill => skill.category.includes(category));
+
+    filteredSkills.slice(0, limit).forEach(skill => {
+        const skillItem = document.createElement('div');
+        skillItem.className = `skill-item category-${skill.category}`;
+        skillItem.innerHTML = `
+            <i class="${skill.icon}"></i>
+            <h3>${skill.name}</h3>
+        `;
+        skillItem.addEventListener('click', () => openModal(skill));
+        skillsGrid.appendChild(skillItem);
+    });
+
+    updateButtonVisibility(filteredSkills.length, limit);
 }
 
-generateSkillItems();
+function updateButtonVisibility(totalSkills, visibleSkills) {
+    loadMoreBtn.style.display = visibleSkills < totalSkills ? 'inline-block' : 'none';
+    showLessBtn.style.display = visibleSkills > 8 ? 'inline-block' : 'none';
+}
+
+loadMoreBtn.addEventListener('click', () => {
+    visibleSkills += 8;
+    generateSkillItems(currentCategory, visibleSkills);
+});
+
+showLessBtn.addEventListener('click', () => {
+    visibleSkills = 8;
+    generateSkillItems(currentCategory, visibleSkills);
+});
+
 
 // Modal functionality
 const modal = document.getElementById("skillModal");
@@ -322,41 +347,30 @@ window.addEventListener("click", function(event) {
 
 // Skills filtering
 const categoryBtns = document.querySelectorAll('.category-btn');
-const skillItems = document.querySelectorAll('.skill-item');
 
 categoryBtns.forEach(btn => btn.addEventListener('click', filterSkills));
 
 function filterSkills(e) {
-  const filter = e.target.dataset.filter;
-  categoryBtns.forEach(btn => btn.classList.remove('active'));
-  e.target.classList.add('active');
-
-  skillItems.forEach(item => {
-      const categories = item.className.split(' ').filter(cls => cls.startsWith('category-'));
-      if (filter === 'all' || categories.includes(`category-${filter}`)) {
-          item.style.display = 'block';
-          setTimeout(() => {
-              item.style.opacity = '1';
-              item.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-          }, 10);
-      } else {
-          item.style.opacity = '0';
-          item.style.transform = 'translateY(20px) rotateX(5deg) rotateY(5deg)';
-          setTimeout(() => {
-              item.style.display = 'none';
-          }, 300);
-      }
-  });
+    const filter = e.target.dataset.filter;
+    categoryBtns.forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+    currentCategory = filter;
+    visibleSkills = 8;
+    generateSkillItems(filter, visibleSkills);
 }
+
+// Initialize the skills grid
+generateSkillItems('all', visibleSkills);
 
 // Add animation to skill items on page load
 window.addEventListener('load', () => {
-  skillItems.forEach((item, index) => {
-      setTimeout(() => {
-          item.style.opacity = '1';
-          item.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-      }, index * 100);
-  });
+    const skillItems = document.querySelectorAll('.skill-item');
+    skillItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+        }, index * 100);
+    });
 });
 
 // work read more
