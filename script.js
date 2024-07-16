@@ -1,24 +1,261 @@
 // Theme toggle functionality
 const themeToggleBtn = document.getElementById('themeToggleBtn');
+const themeSelect = document.getElementById('themeSelect');
 const body = document.body;
 
-themeToggleBtn.addEventListener('click', () => {
-    body.classList.toggle('day-mode');
-    updateThemeIcon();
+
+function updateParticles(theme) {
+  const configurations = {
+    default: {
+      color: "#ffffff",
+      line_color: "#ffffff",
+      shape: "circle",
+      number: 80,
+      size: 3,
+      speed: 6
+    },
+    "day-mode": {
+      color: ["#4a90e2", "#3498db", "#2980b9"],
+      line_color: "#3498db",
+      shape: "circle",
+      number: 50,
+      size: 4,
+      speed: 4
+    },
+    "neon-cyberpunk": {
+      color: ["#ff00ff", "#00ffff", "#00ff00", "#ff00cc"],
+      line_color: "#ff00ff",
+      shape: ["triangle", "polygon"],
+      number: 100,
+      size: 3,
+      speed: 8
+    },
+    "forest-mystique": {
+      color: ["#7fff00", "#ffd700", "#32cd32", "#228b22"],
+      line_color: "#90ee90",
+      shape: ["circle", "star"],
+      number: 60,
+      size: 4,
+      speed: 3
+    },
+    "ocean-depths": {
+      color: ["#00ffff", "#87ceeb", "#4682b4", "#1e90ff"],
+      line_color: "#4682b4",
+      shape: ["circle", "edge"],
+      number: 70,
+      size: 3,
+      speed: 2
+    },
+    "sunset-vibes": {
+      color: ["#ff7f50", "#ffd700", "#ff4500", "#ff6347"],
+      line_color: "#ff7f50",
+      shape: ["circle", "triangle"],
+      number: 60,
+      size: 4,
+      speed: 5
+    },
+    "retro-wave": {
+      color: ["#ff1493", "#00ffff", "#f0e68c", "#ff00ff"],
+      line_color: "#ff1493",
+      shape: ["star", "polygon"],
+      number: 90,
+      size: 3,
+      speed: 7
+    },
+    "northern-lights": {
+      color: ["#7df9ff", "#adff2f", "#e0ffff", "#00fa9a"],
+      line_color: "#7df9ff",
+      shape: ["circle", "curve"],
+      number: 80,
+      size: 3,
+      speed: 4
+    },
+    "steampunk-scholar": {
+      color: ["#b87333", "#ffd700", "#cd7f32", "#d2691e"],
+      line_color: "#b87333",
+      shape: ["circle", "polygon"],
+      number: 50,
+      size: 4,
+      speed: 3
+    },
+    "neon-tokyo": {
+      color: ["#ff2a6d", "#05d9e8", "#ffffff", "#ff1493"],
+      line_color: "#ff2a6d",
+      shape: ["circle", "star"],
+      number: 100,
+      size: 3,
+      speed: 6
+    },
+    "cosmic-voyage": {
+      color: ["#9370db", "#00fa9a", "#e6e6fa", "#7b68ee"],
+      line_color: "#9370db",
+      shape: ["circle", "polygon"],
+      number: 90,
+      size: 2,
+      speed: 5
+    },
+    "ethereal-dream": {
+      color: ["#ff69b4", "#dda0dd", "#ee82ee", "#da70d6"],
+      line_color: "#ff69b4",
+      shape: ["circle", "star"],
+      number: 90,
+      size: 3,
+      speed: 4
+    },
+    "quantum-flux": {
+      color: ["#00ffff", "#ff00ff", "#ffff00", "#00ff00"],
+      line_color: "#00ffff",
+      shape: ["circle", "triangle", "polygon"],
+      number: 60,
+      size: 2,
+      speed: 7
+    },
+    "volcanic-inferno": {
+      color: ["#ff4500", "#ff6347", "#ff7f50", "#ffa500"],
+      line_color: "#ff4500",
+      shape: ["circle", "triangle"],
+      number: 80,
+      size: 3,
+      speed: 6
+    },
+    "cosmic-odyssey": {
+      color: ["#ff00ff", "#00ffff", "#ffff00", "#ff1493", "#4b0082"],
+      line_color: "#ff00ff",
+      shape: ["circle", "triangle", "star", "polygon"],
+      number: 110,
+      size: 3,
+      speed: 6,
+      opacity: 0.7,
+      wobble: true,
+      pulse: true
+    },
+    "bioluminescent-abyss": {
+      color: ["#00ff87", "#00ffff", "#87ff00", "#00fa9a", "#7fffd4"],
+      line_color: "#00ff87",
+      shape: ["circle", "curve"],
+      number: 100,
+      size: 4,
+      speed: 3,
+      opacity: 0.8,
+      glow: true
+    },
+    "fractal-dimension": {
+      color: ["#ff6b6b", "#4ecdc4", "#45b7d1", "#f7d354", "#8a2be2"],
+      line_color: "#ff6b6b",
+      shape: ["polygon", "star"],
+      number: 110,
+      size: 3,
+      speed: 5,
+      opacity: 0.6,
+      spin: true
+    },
+    "aurora-tech": {
+      color: ["#39ff14", "#00ff00", "#7cfc00", "#32cd32", "#98fb98"],
+      line_color: "#39ff14",
+      shape: ["circle", "triangle"],
+      number: 110,
+      size: 2,
+      speed: 7,
+      opacity: 0.9,
+      trail: true
+    },
+    "quantum-resonance": {
+      color: ["#ff00ff", "#00ffff", "#ffff00", "#ff1493", "#4b0082", "#00ff00"],
+      line_color: "#ffffff",
+      shape: ["circle", "star", "polygon"],
+      number: 100,
+      size: 2,
+      speed: 8,
+      opacity: 0.7,
+      warp: true
+    }
+  };
+
+  const config = configurations[theme] || configurations.default;
+
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: config.number, density: { enable: true, value_area: 800 } },
+      color: { value: config.color },
+      shape: { 
+        type: config.shape, 
+        polygon: { nb_sides: 6 },
+        character: { value: "★", font: "Verdana", style: "", weight: "400" },
+        image: { src: "path/to/svg/hexagon.svg", width: 100, height: 100 }
+      },
+      opacity: { 
+        value: config.opacity, 
+        random: true, 
+        anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } 
+      },
+      size: { 
+        value: config.size, 
+        random: true, 
+        anim: { enable: true, speed: 2, size_min: 0.1, sync: false } 
+      },
+      line_linked: { 
+        enable: true, 
+        distance: 150, 
+        color: config.line_color, 
+        opacity: 0.4, 
+        width: 1,
+        triangles: { enable: true, color: config.line_color, opacity: 0.1 }
+      },
+      move: { 
+        enable: true, 
+        speed: config.speed, 
+        direction: "none", 
+        random: true, 
+        straight: false, 
+        out_mode: "out", 
+        bounce: false,
+        attract: { enable: true, rotateX: 600, rotateY: 1200 }
+      },
+      wobble: { enable: config.wobble, distance: 10, speed: 10 },
+      pulse: { enable: config.pulse, frequency: 0.05, opacity_min: 0, opacity_max: 1 },
+      glow: { enable: config.glow, color: config.color, radius: 10 },
+      spin: { enable: config.spin, clockwise: true, speed: 5 },
+      trail: { enable: config.trail, length: 10, fillColor: config.color },
+      warp: { enable: config.warp, warpSpeed: 0.5, warpRotate: 180 }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: { 
+        onhover: { enable: true, mode: "grab" }, 
+        onclick: { enable: true, mode: "push" }, 
+        resize: true 
+      },
+      modes: { 
+        grab: { 
+          distance: 140, 
+          line_linked: { opacity: 1 }
+        },
+        push: { particles_nb: 4 },
+        remove: { particles_nb: 2 }
+      }
+    },
+    retina_detect: true
+  });
+}
+
+themeSelect.addEventListener('change', (event) => {
+    const selectedTheme = event.target.value;
+    body.className = ''; // Reset any existing theme
+    if (selectedTheme !== 'default') {
+        body.classList.add(selectedTheme);
+    }
+    updateParticles(selectedTheme);
+    addFloatingElements(selectedTheme);
 });
 
-function updateThemeIcon() {
-    const sunIcon = themeToggleBtn.querySelector('.fa-sun');
-    const moonIcon = themeToggleBtn.querySelector('.fa-moon');
-    
-    if (body.classList.contains('day-mode')) {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'inline-block';
-    } else {
-        sunIcon.style.display = 'inline-block';
-        moonIcon.style.display = 'none';
-    }
+function updateThemeSelect() {
+    const currentTheme = body.className || 'default';
+    themeSelect.value = currentTheme;
 }
+
+// Initial setup
+updateThemeSelect();
+updateParticles('default');
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
@@ -64,32 +301,13 @@ window.addEventListener('scroll', function() {
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
 
-// Initialize theme icon on page load
-updateThemeIcon();
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    particlesJS('particles-js', {
-        particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: "#ffffff" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5, random: false },
-            size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
-            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-        },
-        retina_detect: true
-    });
+    // Initialize particles.js
+    updateParticles('default');
 
     // Typing effect
     const typingElement = document.querySelector('.typing');
-    const words = ['full-stack developer', 'data engineer', 'problem-solver'];
+    const words = ['full-stack developer', 'data engineer', 'QA tester', 'problem-solver'];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -118,137 +336,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     type();
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize particles.js
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#000000"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-          "polygon": {
-            "nb_sides": 12
-          },
-          "image": {
-            "src": "img/github.svg",
-            "width": 100,
-            "height": 100
-          }
-        },
-        "opacity": {
-          "value": 0.496,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": true,
-            "mode": "grab"
-          },
-          "onclick": {
-            "enable": true,
-            "mode": "push"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 170.15484090522386,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 200,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
-      "retina_detect": true
-    });
-  
-    // Toggle light and dark modes
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-    toggleSwitch.addEventListener('change', switchTheme, false);
-  
-    function switchTheme(e) {
-      if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.body.classList.remove('light-mode');
-        document.body.classList.add('dark-mode');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        document.body.classList.remove('dark-mode');
-        document.body.classList.add('light-mode');
-      }
-    }
-  });
-
 
 // Skills data
 const skillsData = [
@@ -281,40 +368,39 @@ let currentCategory = 'all';
 let visibleSkills = 8;
 
 function generateSkillItems(category, limit) {
-    skillsGrid.innerHTML = '';
-    const filteredSkills = category === 'all'
-        ? skillsData
-        : skillsData.filter(skill => skill.category.includes(category));
+  skillsGrid.innerHTML = '';
+  const filteredSkills = category === 'all'
+      ? skillsData
+      : skillsData.filter(skill => skill.category.includes(category));
 
-    filteredSkills.slice(0, limit).forEach(skill => {
-        const skillItem = document.createElement('div');
-        skillItem.className = `skill-item category-${skill.category}`;
-        skillItem.innerHTML = `
-            <i class="${skill.icon}"></i>
-            <h3>${skill.name}</h3>
-        `;
-        skillItem.addEventListener('click', () => openModal(skill));
-        skillsGrid.appendChild(skillItem);
-    });
+  filteredSkills.slice(0, limit).forEach(skill => {
+      const skillItem = document.createElement('div');
+      skillItem.className = `skill-item category-${skill.category}`;
+      skillItem.innerHTML = `
+          <i class="${skill.icon}"></i>
+          <h3>${skill.name}</h3>
+      `;
+      skillItem.addEventListener('click', () => openModal(skill));
+      skillsGrid.appendChild(skillItem);
+  });
 
-    updateButtonVisibility(filteredSkills.length, limit);
+  updateButtonVisibility(filteredSkills.length, limit);
 }
 
 function updateButtonVisibility(totalSkills, visibleSkills) {
-    loadMoreBtn.style.display = visibleSkills < totalSkills ? 'inline-block' : 'none';
-    showLessBtn.style.display = visibleSkills > 8 ? 'inline-block' : 'none';
+  loadMoreBtn.style.display = visibleSkills < totalSkills ? 'inline-block' : 'none';
+  showLessBtn.style.display = visibleSkills > 8 ? 'inline-block' : 'none';
 }
 
 loadMoreBtn.addEventListener('click', () => {
-    visibleSkills += 8;
-    generateSkillItems(currentCategory, visibleSkills);
+  visibleSkills += 8;
+  generateSkillItems(currentCategory, visibleSkills);
 });
 
 showLessBtn.addEventListener('click', () => {
-    visibleSkills = 8;
-    generateSkillItems(currentCategory, visibleSkills);
+  visibleSkills = 8;
+  generateSkillItems(currentCategory, visibleSkills);
 });
-
 
 // Modal functionality
 const modal = document.getElementById("skillModal");
@@ -351,12 +437,12 @@ const categoryBtns = document.querySelectorAll('.category-btn');
 categoryBtns.forEach(btn => btn.addEventListener('click', filterSkills));
 
 function filterSkills(e) {
-    const filter = e.target.dataset.filter;
-    categoryBtns.forEach(btn => btn.classList.remove('active'));
-    e.target.classList.add('active');
-    currentCategory = filter;
-    visibleSkills = 8;
-    generateSkillItems(filter, visibleSkills);
+  const filter = e.target.dataset.filter;
+  categoryBtns.forEach(btn => btn.classList.remove('active'));
+  e.target.classList.add('active');
+  currentCategory = filter;
+  visibleSkills = 8;
+  generateSkillItems(filter, visibleSkills);
 }
 
 // Initialize the skills grid
@@ -364,170 +450,279 @@ generateSkillItems('all', visibleSkills);
 
 // Add animation to skill items on page load
 window.addEventListener('load', () => {
-    const skillItems = document.querySelectorAll('.skill-item');
-    skillItems.forEach((item, index) => {
-        setTimeout(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-        }, index * 100);
-    });
+  const skillItems = document.querySelectorAll('.skill-item');
+  skillItems.forEach((item, index) => {
+      setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+      }, index * 100);
+  });
 });
 
 // work read more
 document.addEventListener("DOMContentLoaded", function() {
-    const readMoreButtons = document.querySelectorAll('.read-more');
-    
-    readMoreButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const timelineBody = this.previousElementSibling;
-        if (timelineBody.style.maxHeight) {
-          timelineBody.style.maxHeight = null;
-          this.textContent = 'Read More';
-        } else {
-          timelineBody.style.maxHeight = timelineBody.scrollHeight + "px";
-          this.textContent = 'Read Less';
-        }
-      });
+  const readMoreButtons = document.querySelectorAll('.read-more');
+  
+  readMoreButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const timelineBody = this.previousElementSibling;
+      if (timelineBody.style.maxHeight) {
+        timelineBody.style.maxHeight = null;
+        this.textContent = 'Read More';
+      } else {
+        timelineBody.style.maxHeight = timelineBody.scrollHeight + "px";
+        this.textContent = 'Read Less';
+      }
     });
-  
-    // Parallax effect for background
-    window.addEventListener('scroll', function() {
-      const scrollPosition = window.pageYOffset;
-      document.querySelector('.experience-bg').style.transform = `translateY(${scrollPosition * 0.5}px)`;
-    });
-  
-    // Animate timeline items on scroll
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-        }
-      });
-    }, { threshold: 0.1 });
-  
-    timelineItems.forEach(item => observer.observe(item));
   });
+});
 
-// Project filtering
+// Project data
+const projectData = [
+{
+    title: "Job Aggregator Website",
+    description: "Developed a full-stack web application utilizing Django for backend and React for frontend, enabling users to search for job listings based on title and location. Integrated with an external API to fetch real-time job data. Implemented features for displaying search results and viewing detailed job information. Successfully deployed and completed project, demonstrating proficiency in web development and API integration.",
+    technologies: ["Django", "React", "Python"],
+    category: ["python", "django", "hcj"]
+},
+{
+    title: "Notes App",
+    description: "Developed a dynamic notes application leveraging Django for the backend and React for the frontend. This application enables users to seamlessly create, update, and remove notes, providing a streamlined experience for organizing information effectively.",
+    technologies: ["Django", "React", "Python"],
+    category: ["python", "django", "hcj"]
+},
+{
+    title: "Calculator",
+    description: "Developed simple calculator with a responsive and very beautiful style.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    category: ["hcj"]
+},
+{
+    title: "Tic-Tac-Toe",
+    description: "Implemented Tic-Tac-Toe game with a responsive and very beautiful style.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    category: ["hcj"]
+},
+{
+    title: "Guess The Word",
+    description: "Developed game 'Wordle' with amazing style and structure.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    category: ["hcj"]
+},
+{
+    title: "Timer",
+    description: "Implemented Timer project with unique and dynamic style.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    category: ["hcj"]
+},
+{
+    title: "Price Comparison",
+    description: "Developed a price comparison web application using Django, integrating scraping scripts for major e-commerce websites like Amazon, eBay, Walmart, Target, Etsy, and Wayfair. Implemented sorting functionality to display search results from cheapest to most expensive.",
+    technologies: ["Python", "Django", "BeautifulSoup"],
+    category: ["python", "django"]
+},
+{
+    title: "Weather Forecast",
+    description: "Built a user-friendly weather forecast app using Django and the OpenWeatherMap API, offering accurate weather predictions for desired locations, enhancing user experience and enabling informed planning.",
+    technologies: ["Python", "Django"],
+    category: ["python", "django"]
+},
+{
+    title: "Commerce",
+    description: "Created eBay-style auction site with Django, featuring listing creation, bidding, commenting, and watchlists. Utilized Django models for database management and integrated admin interface.",
+    technologies: ["Python", "Django", "MySQL"],
+    category: ["python", "django", "bases"]
+},
+{
+    title: "Finance",
+    description: "Developed a simple web application, Finance, enabling users to manage stock portfolios.",
+    technologies: ["Python", "Flask", "MySQL"],
+    category: ["python", "flask", "bases"]
+},
+{
+    title: "Sales Dashboard",
+    description: "Developed an advanced sales dashboard using Power BI, leveraging data from SQL databases. Demonstrated expertise in data cleaning, exploratory data analysis, and predictive modeling to uncover actionable insights driving business decisions.",
+    technologies: ["Power BI", "SQL"],
+    category: ["tabi"]
+},
+{
+    title: "Data Analysis Dashboard",
+    description: "Designed a comprehensive data analysis dashboard for a Pizza Restaurant using Power BI and MariaDB, delivering key performance indicators and actionable insights, facilitating strategic decision-making and business optimization.",
+    technologies: ["Power BI", "MariaDB"],
+    category: ["tabi"]
+},
+{
+    title: "COVID Insight Analysis Dashboard",
+    description: "Leveraged Power BI to analyze COVID-19 data, providing insights into virus spread, vaccination rates, and their impact on public health and the economy. Integrated diverse data sources, crafted interactive visualizations, enabling users to discern trends for informed decision-making.",
+    technologies: ["Power BI"],
+    category: ["tabi"]
+},
+{
+    title: "User Requirements Analysis Dashboard",
+    description: "Developed a comprehensive Tableau dashboard project by analyzing user requirements, creating mockups, and deciding on chart types. Built the data model, prepared the data source, and created various charts. Designed the layout container and constructed the dashboard to deliver insightful visualizations and facilitate data-driven decision-making.",
+    technologies: ["Tableau"],
+    category: ["tabi"]
+},
+{
+    title: "Wordle Game",
+    description: "Implemented a simplified version of the popular game 'Wordle' in C, providing users with an engaging word-guessing experience.",
+    technologies: ["C"],
+    category: ["ccc"]
+},
+{
+    title: "Group Chat Application",
+    description: "Developed a dynamic and interactive group chat application in Java, employing socket programming and multithreading for seamless communication among users.",
+    technologies: ["Java"],
+    category: ["javaa"]
+},
+{
+    title: "SpotiJy",
+    description: "Song manager program organizing artists, albums, and songs. Add artists, track trending music, and manage their collections efficiently.",
+    technologies: ["Java"],
+    category: ["javaa"]
+}
+];
+
+// Project filtering and Swiper initialization
 const filterBtn = document.getElementById('filterBtn');
 const filterDropdown = document.getElementById('filterDropdown');
 const filterLinks = filterDropdown.querySelectorAll('a');
-const projectItems = document.querySelectorAll('.project-item');
 let swiper;
 
 filterBtn.addEventListener('click', function(event) {
-    event.preventDefault();
-    filterBtn.classList.toggle('active');
-    filterDropdown.classList.toggle('show');
+  event.preventDefault();
+  filterBtn.classList.toggle('active');
+  filterDropdown.classList.toggle('show');
 });
 
 filterLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-        event.preventDefault();
-        const filter = this.dataset.filter;
-        filterProjects(filter);
-        updateActiveFilter(this);
-        closeDropdown();
-    });
+  link.addEventListener('click', function(event) {
+      event.preventDefault();
+      const filter = this.dataset.filter;
+      filterProjects(filter);
+      updateActiveFilter(this);
+      closeDropdown();
+  });
 });
 
 function updateActiveFilter(clickedLink) {
-    filterLinks.forEach(link => link.classList.remove('active'));
-    clickedLink.classList.add('active');
-    filterBtn.querySelector('span').textContent = clickedLink.textContent;
+  filterLinks.forEach(link => link.classList.remove('active'));
+  clickedLink.classList.add('active');
+  filterBtn.querySelector('span').textContent = clickedLink.textContent;
 }
 
 function closeDropdown() {
-    filterBtn.classList.remove('active');
-    filterDropdown.classList.remove('show');
+  filterBtn.classList.remove('active');
+  filterDropdown.classList.remove('show');
 }
 
 window.addEventListener('click', function(event) {
-    if (!event.target.closest('.filter-dropdown')) {
-        closeDropdown();
-    }
+  if (!event.target.closest('.filter-dropdown')) {
+      closeDropdown();
+  }
 });
 
 function filterProjects(filter) {
-    const swiperWrapper = document.querySelector('.swiper-wrapper');
-    swiperWrapper.innerHTML = '';
+  const swiperWrapper = document.querySelector('.swiper-wrapper');
+  swiperWrapper.innerHTML = '';
 
-    projectItems.forEach(item => {
-        const technologies = item.dataset.technologies.toLowerCase();
-        const shouldShow = filter === 'all' || technologies.includes(filter);
-        
-        if (shouldShow) {
-            swiperWrapper.appendChild(item);
-            item.style.display = 'flex';
-        } else {
-            item.style.display = 'none';
-        }
-    });
+  projectData.forEach(project => {
+      if (filter === 'all' || project.category.includes(filter)) {
+          const slide = createProjectSlide(project);
+          swiperWrapper.appendChild(slide);
+      }
+  });
 
-    if (swiper) {
-        swiper.destroy(true, true);
-    }
-    initSwiper();
+  if (swiper) {
+      swiper.destroy(true, true);
+  }
+  initSwiper();
+  
+  // After initialization, update the swiper to account for the new slides
+  swiper.update();
+  swiper.slideToLoop(0); // Reset to the first slide
+}
+
+function createProjectSlide(project) {
+  const slide = document.createElement('div');
+  slide.className = 'swiper-slide project-item';
+  slide.dataset.technologies = project.technologies.join(' ');
+
+  const content = `
+      <h3>${project.title}</h3>
+      <p class="project-description">${project.description}</p>
+      <div class="project-technologies">
+          ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+      </div>
+  `;
+
+  slide.innerHTML = content;
+  return slide;
 }
 
 function initSwiper() {
-    swiper = new Swiper('.swiper-container', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        coverflowEffect: {
-            rotate: 0,
-            stretch: 0,
-            depth: 100,
-            modifier: 2,
-            slideShadows: true,
-        },
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            },
-        },
-    });
+  if (swiper) {
+      swiper.destroy();
+  }
+  swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      loopedSlides: 5,
+      coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+      },
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+          640: {
+              slidesPerView: 1,
+          },
+          768: {
+              slidesPerView: 2,
+          },
+          1024: {
+              slidesPerView: 3,
+          },
+      },
+  });
 }
 
-document.addEventListener('DOMContentLoaded', initSwiper);
+document.addEventListener('DOMContentLoaded', () => {
+  filterProjects('all');
+});
 
-
+// skills
 document.querySelectorAll('.skill-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        const skill = this.dataset.skill;
-        const progress = {
-            'Frontend': 85,
-            'Backend': 80,
-            'Database': 75,
-            'Tools': 70
-        }[skill];
-        
-        document.querySelector('.skill-progress').style.width = `${progress}%`;
-        document.querySelector('.skill-description').textContent = `${skill} proficiency: ${progress}%`;
-    });
+  card.addEventListener('mouseenter', function() {
+      const skill = this.dataset.skill;
+      const progress = {
+          'Frontend': 85,
+          'Backend': 80,
+          'Database': 75,
+          'Tools': 70
+      }[skill];
+      
+      document.querySelector('.skill-progress').style.width = `${progress}%`;
+      document.querySelector('.skill-description').textContent = `${skill} proficiency: ${progress}%`;
+  });
 
-    card.addEventListener('mouseleave', function() {
-        document.querySelector('.skill-progress').style.width = '0%';
-        document.querySelector('.skill-description').textContent = 'Hover over skills to see details';
-    });
+  card.addEventListener('mouseleave', function() {
+      document.querySelector('.skill-progress').style.width = '0%';
+      document.querySelector('.skill-description').textContent = 'Hover over skills to see details';
+  });
 });
 
 // Typing effect
@@ -536,11 +731,11 @@ let i = 0;
 const typingSpeed = 30;
 
 function typeWriter() {
-    if (i < typingText.length) {
-        document.querySelector('.typing-effect').innerHTML += typingText.charAt(i);
-        i++;
-        setTimeout(typeWriter, typingSpeed);
-    }
+  if (i < typingText.length) {
+      document.querySelector('.typing-effect').innerHTML += typingText.charAt(i);
+      i++;
+      setTimeout(typeWriter, typingSpeed);
+  }
 }
 
 typeWriter();
@@ -548,58 +743,41 @@ typeWriter();
 // Terminal interaction
 const terminalWindow = document.getElementById('terminalWindow');
 const commands = {
-    help: "Available commands: about, skills, projects, contact",
-    about: "Soso Pkhakadze: A passionate computer science student and aspiring Full Stack Developer.",
-    skills: "Skills: Full Stack Development, Data Analysis, Problem Solving, Continuous Learning",
-    projects: "Check out my projects section for a list of my work!",
-    contact: "Email: sosiko2004@gmail.com | LinkedIn: soso-pkhakadze-733428274"
+  help: "Available commands: about, skills, projects, contact",
+  about: "Soso Pkhakadze: A passionate computer science student and aspiring Full Stack Developer.",
+  skills: "Skills: Full Stack Development, Data Analysis, Problem Solving, Continuous Learning",
+  projects: "Check out my projects section for a list of my work!",
+  contact: "Email: sosiko2004@gmail.com | LinkedIn: soso-pkhakadze-733428274"
 };
 
 terminalWindow.addEventListener('click', () => {
-    const input = prompt("Enter a command (type 'help' for available commands):");
-    if (input) {
-        const output = commands[input.toLowerCase()] || "Command not recognized. Type 'help' for available commands.";
-        terminalWindow.innerHTML += `<p class="line">> ${input}</p>`;
-        terminalWindow.innerHTML += `<p class="line">${output}</p>`;
-        terminalWindow.innerHTML += `<p class="line active">> <span class="cursor">|</span></p>`;
-        terminalWindow.scrollTop = terminalWindow.scrollHeight;
-    }
+  const input = prompt("Enter a command (type 'help' for available commands):");
+  if (input) {
+      const output = commands[input.toLowerCase()] || "Command not recognized. Type 'help' for available commands.";
+      terminalWindow.innerHTML += `<p class="line">> ${input}</p>`;
+      terminalWindow.innerHTML += `<p class="line">${output}</p>`;
+      terminalWindow.innerHTML += `<p class="line active">> <span class="cursor">|</span></p>`;
+      terminalWindow.scrollTop = terminalWindow.scrollHeight;
+  }
 });
 
-
+// Particles
 document.addEventListener('DOMContentLoaded', (event) => {
     // Initialize AOS
     AOS.init({
-        duration: 1000,
-        once: true,
+        duration: 100,
+        once: false,
     });
 
     // Initialize particles.js
-    particlesJS('particles-js', {
-        particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: "#ffffff" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5, random: false },
-            size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
-            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-        },
-        retina_detect: true
-    });
+    updateParticles('default');
 });
 
-
+// Quantum particles
 document.addEventListener('DOMContentLoaded', () => {
-  // Quantum particles
-  const particlesContainer = document.getElementById('quantum-particles');
+    const particlesContainer = document.getElementById('quantum-particles');
   
-  function createParticle() {
+    function createParticle() {
       const particle = document.createElement('div');
       particle.style.position = 'absolute';
       particle.style.width = '2px';
@@ -622,19 +800,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 5000);
   }
   
-  setInterval(createParticle, 100);
-
-
-  // Quantum link hover effect
-  const quantumLinks = document.querySelectorAll('.quantum-link');
-  quantumLinks.forEach(link => {
-      link.addEventListener('mouseover', () => {
-          link.style.color = 'var(--primary-color)';
-          link.querySelector('.link-orbit').style.borderColor = 'var(--secondary-color)';
-      });
-      link.addEventListener('mouseout', () => {
-          link.style.color = 'var(--text-color)';
-          link.querySelector('.link-orbit').style.borderColor = 'var(--primary-color)';
-      });
-  });
+    setInterval(createParticle, 100);
 });
