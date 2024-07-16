@@ -32,16 +32,34 @@
             <a href="#contact"><span data-text="Contact">Contact</span></a>
         </div>
         <div class="nav-controls">
-            <button id="themeToggleBtn" aria-label="Toggle theme">
-                <i class="fas fa-sun"></i>
-                <i class="fas fa-moon"></i>
-            </button>
+            <select id="themeSelect" aria-label="Select theme">
+                <option value="default">Default</option>
+                <option value="day-mode">Day Mode</option>
+                <option value="classic-blackorange">Black-Orange</option>
+                <option value="neon-cyberpunk">Neon Cyberpunk</option>
+                <option value="forest-mystique">Forest Mystique</option>
+                <option value="ocean-depths">Ocean Depths</option>
+                <option value="sunset-vibes">Sunset Vibes</option>
+                <option value="retro-wave">Retro Wave</option>
+                <option value="northern-lights">Northern Lights</option>
+                <option value="steampunk-scholar">Steampunk Scholar</option>
+                <option value="neon-tokyo">Neon Tokyo</option>
+                <option value="cosmic-voyage">Cosmic Voyage</option>
+                <option value="ethereal-dream">Ethereal Dream</option>
+                <option value="quantum-flux">Quantum Flux</option>
+                <option value="volcanic-inferno">Volcanic Inferno</option>
+                <option value="cosmic-odyssey">Cosmic Odyssey</option>
+                <option value="bioluminescent-abyss">Bioluminescent Abyss</option>
+                <option value="fractal-dimension">Fractal Dimension</option>
+                <option value="aurora-tech">Aurora Tech</option>
+                <option value="quantum-resonance">Quantum Resonance</option>
+              </select>
             <div class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
-        </div>
+          </div>
     </div>
 </nav>
 
@@ -172,39 +190,67 @@
 <!-- Work Experience Section -->
 <section id="work" class="work-section">
     <div class="work-content">
-      <h2 class="section-title">Work Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item" data-aos="fade-right">
-          <div class="timeline-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-          <div class="timeline-content">
-            <h3>Data Analyst</h3>
-            <h4>Netex Consulting LLC</h4>
-            <p class="timeline-date">Aug 2022 - Aug 2023</p>
-            <div class="timeline-body">
-              <div class="skill-tags">
-                <span>Data Analysis</span>
-                <span>Thermal Imaging</span>
-                <span>Excel</span>
-                <span>Remote Collaboration</span>
-              </div>
-              <ul>
-                <li>Utilized thermal imaging technology for livestock condition analysis</li>
-                <li>Conducted detailed assessments of thermal camera footage</li>
-                <li>Maintained and updated Excel spreadsheets with precise data entries</li>
-                <li>Collaborated with a remote team of 4-5 colleagues</li>
-                <li>Developed and presented reports with actionable insights</li>
-                <li>Enhanced team communication and coordination</li>
-              </ul>
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Data Analyst</h3>
+                    <h4>Netex Consulting LLC</h4>
+                    <p class="timeline-date">Aug 2022 - Aug 2023</p>
+                    <div class="timeline-body">
+                        <div class="skill-tags">
+                            <span>Data Analysis</span>
+                            <span>Thermal Imaging</span>
+                            <span>Excel</span>
+                            <span>Remote Collaboration</span>
+                        </div>
+                        <ul>
+                            <li>Utilized thermal imaging technology for livestock condition analysis</li>
+                            <li>Conducted detailed assessments of thermal camera footage</li>
+                            <li>Maintained and updated Excel spreadsheets with precise data entries</li>
+                            <li>Collaborated with a remote team of 4-5 colleagues</li>
+                            <li>Developed and presented reports with actionable insights</li>
+                            <li>Enhanced team communication and coordination</li>
+                        </ul>
+                    </div>
+                    <button class="read-more">Read More</button>
+                </div>
             </div>
-            <button class="read-more">Read More</button>
-          </div>
+            <!-- Add more timeline items for other work experiences -->
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <div class="timeline-content">
+                    <h3>Junior QA Engineer</h3>
+                    <h4>DevsData</h4>
+                    <p class="timeline-date">Jul 2024 - Present</p>
+                    <div class="timeline-body">
+                        <div class="skill-tags">
+                            <span>Manual Testing</span>
+                            <span>Test Planning</span>
+                            <span>Regression Testing</span>
+                            <span>Web Development Testing</span>
+                        </div>
+                        <ul>
+                            <li>Performed manual testing of new functionalities throughout the development cycle</li>
+                            <li>Executed regression tests to support the delivery process</li>
+                            <li>Created test plans for new requirements in close cooperation with developers and test automation engineers</li>
+                            <li>Challenged developers by reviewing deliverables from a product perspective</li>
+                            <li>Conducted both frontend and backend testing</li>
+                            <li>Maintained and updated detailed checklists for testing processes</li>
+                        </ul>                        
+                    </div>
+                    <button class="read-more">Read More</button>
+                </div>
+            </div>
         </div>
-        <!-- Add more timeline items for other work experiences -->
-      </div>
     </div>
-  </section>
+</section>
+
 
 <!-- Projects Section -->
 <section id="projects" class="projects-section">
@@ -330,7 +376,7 @@
 <!-- Contact Section -->
 <section id="contact" class="contact-section">
     <div class="contact-container">
-        <h2 class="section-title">Let's contact</h2>
+        <h2 class="section-title">Let's connect</h2>
         <div class="contact-content">
             <div class="contact-card">
                 <div class="contact-card-front">
