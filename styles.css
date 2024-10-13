@@ -40,73 +40,74 @@ h1, h2, h3, h4, h5, h6 {
 
 :root {
   --background-color: #0a192f;
-  --background-gradient: linear-gradient(to bottom right, #0a192f, #112240);
+  --background-gradient: linear-gradient(135deg, #0a192f, #172a45, #0a192f);
   --text-color: #e6f1ff;
   --accent-color: #64ffda;
-  --accent-color-hover: #ffd700;
+  --accent-color-hover: #00b7ff;
   --navbar-bg: rgba(10, 25, 47, 0.95);
   --navbar-text: #ccd6f6;
   --navbar-hover: #64ffda;
-  --card-bg: #112240;
-  --card-shadow: 0 10px 30px rgba(2, 12, 27, 0.7);
-  --modal-bg: rgba(10, 25, 47, 0.9);
-  --modal-content-bg: #112240;
-  --close-color: #8892b0;
-  --close-hover-color: #e6f1ff;
+  --card-bg: rgba(23, 42, 69, 0.7);
+  --card-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+  --modal-bg: rgba(10, 25, 47, 0.95);
+  --modal-content-bg: rgba(23, 42, 69, 0.95);
+  --close-color: #ccd6f6;
+  --close-hover-color: #64ffda;
   --button-bg: #64ffda;
   --button-color: #0a192f;
-  --button-hover-bg: #ffd700;
+  --button-hover-bg: #00b7ff;
   --button-hover-color: #0a192f;
-  --terminal-win: #112240;
-  --secondary-color: #ffd700;
-  --learn-hover: 0 5px 15px rgba(255, 215, 0, 0.4);
+  --terminal-win: rgba(23, 42, 69, 0.9);
+  --secondary-color: #ff6b6b;
+  --learn-hover: 0 0 35px rgba(100, 255, 218, 0.5);
 }
 
 .day-mode {
-  --background-color: #f0f8ff;
-  --background-gradient: linear-gradient(45deg, #f0f8ff, #e6f2ff);
+  --background-color: #fafafa;
+  --background-gradient: linear-gradient(45deg, #fafafa, #f0f0f0);
   --text-color: #333333;
-  --accent-color: #4a90e2;
-  --accent-color-hover: #3498db;
-  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --accent-color: #ff6b6b;
+  --accent-color-hover: #ff4757;
+  --navbar-bg: rgba(250, 250, 250, 0.95);
   --navbar-text: #555555;
-  --navbar-hover: #4a90e2;
+  --navbar-hover: #ff6b6b;
   --card-bg: #ffffff;
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  --modal-bg: rgba(240, 248, 255, 0.9);
+  --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  --modal-bg: rgba(250, 250, 250, 0.95);
   --modal-content-bg: #ffffff;
   --close-color: #777777;
   --close-hover-color: #333333;
-  --button-bg: #4a90e2;
+  --button-bg: #ff6b6b;
   --button-color: #ffffff;
-  --button-hover-bg: #3498db;
+  --button-hover-bg: #ff4757;
   --button-hover-color: #ffffff;
-  --terminal-win: #f7fafc;
-  --secondary-color: #f39c12;
-  --learn-hover: 0 5px 15px rgba(74, 144, 226, 0.4);
+  --terminal-win: #f9f9f9;
+  --secondary-color: #5352ed;
+  --learn-hover: 0 8px 20px rgba(255, 107, 107, 0.4);
 }
 
-.classic-blackorange {
+.night-mode {
   --background-color: #121212;
-  --background-gradient: linear-gradient(to bottom right, #121212, #2c2c2c);
-  --text-color: #fff;
-  --accent-color: #f36f3c;
-  --accent-color-hover: #ffffff;
-  --navbar-bg: rgba(28, 28, 28, 0.95);
-  --navbar-text: #e0e0e0;
-  --navbar-hover: #f36f3c;
-  --card-bg: #1e1e1e;
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --modal-bg: rgba(0, 0, 0, 0.9);
-  --modal-content-bg: #1e1e1e;
-  --close-color: #808080;
-  --close-hover-color: #e0e0e0;
-  --button-bg: #f36f3c;
-  --button-color: #fff --button-hover-bg: #fff;
-  --button-hover-color: #f36f3c;
-  --terminal-win: #1e1e1e;
-  --secondary-color: #4CAF50;
-  --learn-hover: 0 5px 15px rgba(76, 175, 80, 0.4);
+  --background-gradient: linear-gradient(45deg, #121212, #1f1f1f);
+  --text-color: #e0e0e0;
+  --accent-color: #bb86fc;
+  --accent-color-hover: #7c4dff;
+  --navbar-bg: rgba(18, 18, 18, 0.95);
+  --navbar-text: #bbbbbb;
+  --navbar-hover: #bb86fc;
+  --card-bg: #1f1f1f;
+  --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  --modal-bg: rgba(18, 18, 18, 0.95);
+  --modal-content-bg: #1f1f1f;
+  --close-color: #bbbbbb;
+  --close-hover-color: #ffffff;
+  --button-bg: #bb86fc;
+  --button-color: #121212;
+  --button-hover-bg: #7c4dff;
+  --button-hover-color: #ffffff;
+  --terminal-win: #1f1f1f;
+  --secondary-color: #03dac6;
+  --learn-hover: 0 8px 20px rgba(187, 134, 252, 0.4);
 }
 
 .neon-cyberpunk {
@@ -229,30 +230,6 @@ h1, h2, h3, h4, h5, h6 {
   --learn-hover: 0 0 25px rgba(255, 20, 147, 0.7);
 }
 
-.northern-lights {
-  --background-color: #0e1621;
-  --background-gradient: linear-gradient(to bottom, #0e1621, #1c3144, #0e1621);
-  --text-color: #e0ffff;
-  --accent-color: #7df9ff;
-  --accent-color-hover: #adff2f;
-  --navbar-bg: rgba(14, 22, 33, 0.95);
-  --navbar-text: #e0ffff;
-  --navbar-hover: #7df9ff;
-  --card-bg: rgba(28, 49, 68, 0.7);
-  --card-shadow: 0 0 20px rgba(125, 249, 255, 0.4);
-  --modal-bg: rgba(14, 22, 33, 0.9);
-  --modal-content-bg: rgba(28, 49, 68, 0.9);
-  --close-color: #e0ffff;
-  --close-hover-color: #7df9ff;
-  --button-bg: #7df9ff;
-  --button-color: #0e1621;
-  --button-hover-bg: #adff2f;
-  --button-hover-color: #0e1621;
-  --terminal-win: rgba(28, 49, 68, 0.8);
-  --secondary-color: #ff69b4;
-  --learn-hover: 0 0 25px rgba(125, 249, 255, 0.6);
-}
-
 .steampunk-scholar {
   --background-color: #2b2117;
   --background-gradient: linear-gradient(135deg, #2b2117, #4a3a2a, #2b2117);
@@ -275,30 +252,6 @@ h1, h2, h3, h4, h5, h6 {
   --terminal-win: rgba(74, 58, 42, 0.8);
   --secondary-color: #32cd32;
   --learn-hover: 0 0 25px rgba(184, 115, 51, 0.6);
-}
-
-.neon-tokyo {
-  --background-color: #1a1a2e;
-  --background-gradient: linear-gradient(45deg, #1a1a2e, #16213e, #1a1a2e);
-  --text-color: #ffffff;
-  --accent-color: #ff2a6d;
-  --accent-color-hover: #05d9e8;
-  --navbar-bg: rgba(26, 26, 46, 0.95);
-  --navbar-text: #ffffff;
-  --navbar-hover: #ff2a6d;
-  --card-bg: rgba(22, 33, 62, 0.7);
-  --card-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
-  --modal-bg: rgba(26, 26, 46, 0.9);
-  --modal-content-bg: rgba(22, 33, 62, 0.9);
-  --close-color: #ffffff;
-  --close-hover-color: #ff2a6d;
-  --button-bg: #ff2a6d;
-  --button-color: #1a1a2e;
-  --button-hover-bg: #05d9e8;
-  --button-hover-color: #1a1a2e;
-  --terminal-win: rgba(22, 33, 62, 0.8);
-  --secondary-color: #ffd700;
-  --learn-hover: 0 0 25px rgba(255, 42, 109, 0.7);
 }
 
 .cosmic-voyage {
@@ -396,6 +349,7 @@ h1, h2, h3, h4, h5, h6 {
   --secondary-color: #00ff00;
   --learn-hover: 0 0 25px rgba(255, 69, 0, 0.7);
 }
+
 
 /* Navbar styles */
 .navbar {
