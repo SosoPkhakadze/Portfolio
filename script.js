@@ -2,27 +2,42 @@
 const themeToggleBtn = document.getElementById('themeToggleBtn');
 const themeSelect = document.getElementById('themeSelect');
 const body = document.body;
+let particleSystem;
 
-
-function updateParticles(theme) {
-  const configurations = {
-    default: {
-      color: "#ffffff",
-      line_color: "#ffffff",
-      shape: "circle",
-      number: 80,
-      size: 3,
-      speed: 6
+const configurations = {
+  default: {
+    color: ["#7df9ff", "#54e346", "#ff6b6b", "#ffcccb"],
+    line_color: "#7df9ff",
+    shape: ["circle", "triangle"],
+    number: 80,
+    size: 3,
+    speed: 4,
+    opacity: 0.6,
+    move: {
+        direction: "top",
+        out_mode: "out"
     },
-    "day-mode": {
+    wobble: true
+},
+  "day-mode": {
       color: ["#4a90e2", "#3498db", "#2980b9"],
       line_color: "#3498db",
       shape: "circle",
-      number: 50,
+      number: 70,
       size: 4,
-      speed: 4
-    },
-    "neon-cyberpunk": {
+      speed: 4,
+      opacity: 0.7
+  },
+  "night-mode": {
+      color: ["#bb86fc", "#3700b3", "#03dac6"],
+      line_color: "#bb86fc",
+      shape: ["circle", "triangle"],
+      number: 70,
+      size: 3,
+      speed: 5,
+      opacity: 0.8
+  },
+  "neon-cyberpunk": {
       color: ["#ff00ff", "#00ffff", "#00ff00", "#ff00cc"],
       line_color: "#ff00ff",
       shape: ["triangle", "polygon"],
@@ -62,14 +77,6 @@ function updateParticles(theme) {
       size: 3,
       speed: 7
     },
-    "northern-lights": {
-      color: ["#7df9ff", "#adff2f", "#e0ffff", "#00fa9a"],
-      line_color: "#7df9ff",
-      shape: ["circle", "curve"],
-      number: 80,
-      size: 3,
-      speed: 4
-    },
     "steampunk-scholar": {
       color: ["#b87333", "#ffd700", "#cd7f32", "#d2691e"],
       line_color: "#b87333",
@@ -77,14 +84,6 @@ function updateParticles(theme) {
       number: 50,
       size: 4,
       speed: 3
-    },
-    "neon-tokyo": {
-      color: ["#ff2a6d", "#05d9e8", "#ffffff", "#ff1493"],
-      line_color: "#ff2a6d",
-      shape: ["circle", "star"],
-      number: 100,
-      size: 3,
-      speed: 6
     },
     "cosmic-voyage": {
       color: ["#9370db", "#00fa9a", "#e6e6fa", "#7b68ee"],
@@ -117,63 +116,27 @@ function updateParticles(theme) {
       number: 80,
       size: 3,
       speed: 6
-    },
-    "cosmic-odyssey": {
-      color: ["#ff00ff", "#00ffff", "#ffff00", "#ff1493", "#4b0082"],
-      line_color: "#ff00ff",
-      shape: ["circle", "triangle", "star", "polygon"],
-      number: 110,
-      size: 3,
-      speed: 6,
-      opacity: 0.7,
-      wobble: true,
-      pulse: true
-    },
-    "bioluminescent-abyss": {
-      color: ["#00ff87", "#00ffff", "#87ff00", "#00fa9a", "#7fffd4"],
-      line_color: "#00ff87",
-      shape: ["circle", "curve"],
-      number: 100,
-      size: 4,
-      speed: 3,
-      opacity: 0.8,
-      glow: true
-    },
-    "fractal-dimension": {
-      color: ["#ff6b6b", "#4ecdc4", "#45b7d1", "#f7d354", "#8a2be2"],
-      line_color: "#ff6b6b",
-      shape: ["polygon", "star"],
-      number: 110,
-      size: 3,
-      speed: 5,
-      opacity: 0.6,
-      spin: true
-    },
-    "aurora-tech": {
-      color: ["#39ff14", "#00ff00", "#7cfc00", "#32cd32", "#98fb98"],
-      line_color: "#39ff14",
-      shape: ["circle", "triangle"],
-      number: 110,
-      size: 2,
-      speed: 7,
-      opacity: 0.9,
-      trail: true
-    },
-    "quantum-resonance": {
-      color: ["#ff00ff", "#00ffff", "#ffff00", "#ff1493", "#4b0082", "#00ff00"],
-      line_color: "#ffffff",
-      shape: ["circle", "star", "polygon"],
-      number: 100,
-      size: 2,
-      speed: 8,
-      opacity: 0.7,
-      warp: true
     }
+};
+
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
   };
+}
 
+function updateParticles(theme) {
   const config = configurations[theme] || configurations.default;
+  const maxParticles = 300;
+  config.number = Math.min(config.number, maxParticles);
 
-  particlesJS('particles-js', {
+  const particlesConfig = {
     particles: {
       number: { value: config.number, density: { enable: true, value_area: 800 } },
       color: { value: config.color },
@@ -184,7 +147,7 @@ function updateParticles(theme) {
         image: { src: "path/to/svg/hexagon.svg", width: 100, height: 100 }
       },
       opacity: { 
-        value: config.opacity, 
+        value: config.opacity || 0.8, 
         random: true, 
         anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false } 
       },
@@ -221,8 +184,8 @@ function updateParticles(theme) {
     interactivity: {
       detect_on: "canvas",
       events: { 
-        onhover: { enable: true, mode: "grab" }, 
-        onclick: { enable: true, mode: "push" }, 
+        onhover: { enable: true }, 
+        onclick: { enable: true }, 
         resize: true 
       },
       modes: { 
@@ -235,27 +198,46 @@ function updateParticles(theme) {
       }
     },
     retina_detect: true
-  });
+  };
+
+  if (particleSystem) {
+    particleSystem.particles.array = [];
+    particleSystem.fn.particlesCreate();
+    particleSystem.particles.move.speed = config.speed;
+    // Update other properties as needed
+    Object.assign(particleSystem.particles, particlesConfig.particles);
+  } else {
+    particleSystem = particlesJS('particles-js', particlesConfig);
+  }
 }
 
+const debouncedUpdateParticles = debounce(updateParticles, 300);
+
 themeSelect.addEventListener('change', (event) => {
-    const selectedTheme = event.target.value;
-    body.className = ''; // Reset any existing theme
-    if (selectedTheme !== 'default') {
-        body.classList.add(selectedTheme);
-    }
-    updateParticles(selectedTheme);
-    addFloatingElements(selectedTheme);
+  const selectedTheme = event.target.value;
+  body.className = ''; 
+  if (selectedTheme !== 'default') {
+    body.classList.add(selectedTheme);
+  }
+  debouncedUpdateParticles(selectedTheme);
 });
 
 function updateThemeSelect() {
-    const currentTheme = body.className || 'default';
-    themeSelect.value = currentTheme;
+  const currentTheme = body.className || 'default';
+  themeSelect.value = currentTheme;
+}
+
+function animate() {
+  if (particleSystem) {
+    particleSystem.fn.particlesUpdate();
+  }
+  requestAnimationFrame(animate);
 }
 
 // Initial setup
 updateThemeSelect();
 updateParticles('default');
+animate();
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
@@ -350,6 +332,9 @@ const skillsData = [
   { name: "Relational databases (MariaDB/MySQL)", icon: "fas fa-database", category: "data-engineering back-end", description: "Having completed a full course on MariaDB in university, I am proficient in working with relational databases, ensuring efficient data management.", level: 80 },
   { name: "BeautifulSoup", icon: "fab fa-python", category: "data-engineering", description: "Self-taught in BeautifulSoup, I have utilized this library in various projects, demonstrating my ability to scrape and manipulate data effectively.", level: 75 },
   { name: "Pandas", icon: "fab fa-python", category: "data-engineering", description: "Self-taught in Pandas, I have utilized this library in various projects, demonstrating my ability to manipulate and analyze data effectively.", level: 75 },
+  { name: "NumPy", icon: "fab fa-python", category: "data-engineering", description: "Had some practices in university while learning Numerical and made few small projects with it.", level: 50 },  
+  { name: "matplotlip", icon: "fab fa-python", category: "data-engineering", description: "Had some practices in university while learning Numerical and made few small projects with it.", level: 40 },
+  { name: "opencv", icon: "fab fa-python", category: "data-engineering", description: "Had some practices in university while learning Numerical and made few small projects with it.", level: 40 },
   { name: "Power BI", icon: "fas fa-chart-bar", category: "data-engineering", description: "Self-taught and proficient in Power BI, I have created insightful reports and visualizations, showcasing my ability to derive meaningful insights from data.", level: 70 },
   { name: "Tableau", icon: "fas fa-chart-bar", category: "data-engineering", description: "Self-taught and proficient in Tableau, I have created insightful reports and visualizations, showcasing my ability to derive meaningful insights from data.", level: 70 },
   { name: "Knowledge of ETL processes", icon: "fas fa-exchange-alt", category: "data-engineering", description: "With a foundational understanding of ETL processes, I am equipped to handle data extraction, transformation, and loading tasks efficiently.", level: 70 },
